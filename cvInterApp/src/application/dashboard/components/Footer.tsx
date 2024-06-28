@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import cvinter_white from '../../../assets/Cvinter_white.png';
 
 const Footer = () => {
@@ -15,7 +16,7 @@ const Footer = () => {
         <div className='text-white mt-12'>
           <h1 className='text-right font-bold text-lg mb-3'>Links</h1>
           <ul className='text-right flex flex-col gap-4'>
-            <li className='hover:font-semibold'><a href="/">Sobre nosotros</a></li>
+            <li className='hover:font-semibold'><Link to={'/about'}>Sobre nosotros</Link></li>
             <li className='hover:font-semibold'><a href="/">Politicas de privacidad</a></li>
             <li className='hover:font-semibold'><a href="/">Cookies</a></li>
           </ul>
