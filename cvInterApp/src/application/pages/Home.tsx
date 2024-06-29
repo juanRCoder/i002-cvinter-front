@@ -1,8 +1,10 @@
-import React from "react";
+
 import Hero from "./Hero";
 import Features from "./Features";
-import CallToAction from "./CallToAction";
 import NavBar from "./NavBar";
+import Product from "./Product";
+import HowItWorks from "./HowItWorks";
+
 
 const Home = () => {
   return (
@@ -10,7 +12,10 @@ const Home = () => {
       <NavBar />
       <Hero />
       <Features />
-      <CallToAction />
+      <Product />
+    <HowItWorks />
+
+
     </div>
   );
 };

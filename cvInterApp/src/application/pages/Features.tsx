@@ -1,31 +1,25 @@
-import React from "react";
+import React from 'react';
 
-const Features = () => {
+interface StatProps {
+  count: number;
+  label: string;
+}
+
+const Stat: React.FC<StatProps> = ({ count, label }) => {
   return (
-    <div className="py-20 px-4 bg-gray-100 text-center">
-      <h2 className="text-3xl font-bold mb-10">Características y Beneficios</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-2xl font-bold mb-4">Entrevistas en Video</h3>
-          <p>Graba y revisa tus entrevistas para mejorar tu desempeño.</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-2xl font-bold mb-4">
-            Plantillas de CV Profesionales
-          </h3>
-          <p>
-            Utiliza nuestras plantillas para crear un currículum atractivo y
-            eficaz.
-          </p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h3 className="text-2xl font-bold mb-4">Perfil Completo</h3>
-          <p>
-            Presenta un perfil completo con videos de entrevistas y CVs a los
-            reclutadores.
-          </p>
-        </div>
-      </div>
+    <div className="text-center mx-4">
+      <div className="text-2xl font-bold">{count}</div>
+      <div className="text-gray-500">{label}</div>
+    </div>
+  );
+};
+
+const Features: React.FC = () => {
+  return (
+    <div className="absolute top-[80%] left-1/2 transform -translate-x-1/2 flex justify-around bg-green-200 py-4 rounded-full my-4 shadow-lg w-11/12 md:w-2/3 z-10">
+      <Stat count={85} label="Personas han usado el creador de CV's" />
+      <Stat count={12} label="Plantillas de CV's en varios modelos" />
+      <Stat count={4.9} label="Calificación de nuestros usuarios" />
     </div>
   );
 };
