@@ -10,8 +10,6 @@ interface FormData {
     password: string;
 }
 
-
-
 const Register: React.FC = () => {
 
     const [formData, setFormData] = useState<FormData>({

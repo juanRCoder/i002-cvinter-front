@@ -14,3 +14,16 @@ export const validateInputErrors= (name: string, value:string) => {
             return ""
     }
 }
+
+export const loginValidations = (name: string, value: string) => {
+
+    switch(name) {
+        case "email":
+            return value ? "" : "Ingrese su email.";
+        case "password":
+            return value ? "" : "Ingrese su contraseña."
+
+        default:
+            return ""
+    }
+}
