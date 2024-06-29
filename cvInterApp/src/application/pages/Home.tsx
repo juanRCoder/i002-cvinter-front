@@ -1,3 +1,13 @@
+import Footer from "../dashboard/components/Footer";
+
+const Home: React.FC = () => {
+  return <>
+    <Footer />
+  </>
+};
+
+export default Home;
+
 
 import Hero from "./Hero";
 import Features from "./Features";
@@ -14,7 +24,7 @@ const Home = () => {
       <Features />
       <Product />
     <HowItWorks />
-
+    <Footer />
 
     </div>
   );
