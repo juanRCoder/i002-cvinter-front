@@ -10,7 +10,7 @@ interface NavigationItem {
 const navigation: NavigationItem[] = [
   { name: 'Inicio', href: '#' },
   { name: 'Cómo funciona', href: '#' },
-  { name: 'Plantillas', href: '#' },
+  { name: 'Plantillas', href: '/CVTemplates' },
   { name: 'Contacto', href: '#' },
 ];
 

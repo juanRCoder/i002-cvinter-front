@@ -4,6 +4,9 @@ import Features from "./Features";
 import NavBar from "./NavBar";
 import Product from "./Product";
 import HowItWorks from "./HowItWorks";
+import NotFound from "./NotFound";
+import Contact from "./Contact";
+
 
 
 const Home = () => {
@@ -13,8 +16,10 @@ const Home = () => {
       <Hero />
       <Features />
       <Product />
-      <HowItWorks />
-      <Footer />
+    <HowItWorks />
+    <Contact />
+    <Footer />
+    <NotFound />
 
     </div>
   );
