@@ -46,4 +46,8 @@ export interface Template5Props {
   certificados: Certificados[];
   softSkills: string[];
   location: Location[];
+  template: number | null; 
+  setTemplate: (templateId: number) => void;
+  setName: (name: string) => void;
+  setLastName: (lastName: string) => void;
 }
