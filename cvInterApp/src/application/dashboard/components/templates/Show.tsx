@@ -77,7 +77,7 @@ function Show() {
     const bioUser = "Soy una persona proactiva, organizada y responsable. Disfruto trabajar en equipo y aportar ideas nuevas. Busco un puesto desafiante y dinámico donde pueda continuar aprendiendo y sumando experiencia."
     return (
         <>
-            <Template5
+            <Template4
                 name="Olivia"
                 lastName="Wilson"
                 titulo="Lic en Administracion"
@@ -91,7 +91,7 @@ function Show() {
                 certificados={certificadosUser}
                 softSkills={softSkillsUser}
             />
-            <Template4
+            <Template5
                 name="Olivia"
                 lastName="Wilson"
                 titulo="Lic en Administracion"
