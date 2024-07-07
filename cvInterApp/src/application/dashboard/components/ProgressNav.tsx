@@ -21,15 +21,21 @@ const ProgressNav = () => {
     ];
 
     return (
-        <div className="w-full flex justify-center">
-            <ul className="flex space-x-4 md:space-x-8 p-4">
+        <div className="w-full flex justify-center h-auto pt-10 pb-4">
+            <ul className="flex flex-wrap justify-center gap-2 md:gap-3 p-2">
                 {phases.map((phase, index) => (
-                    <li key={index} className={`font-bold ${selectedSection === phase.path ? 'bg-green-200' : ''}`}>
+                    <li
+                        key={index}
+                        className={`font-medium text-sm md:text-base ${selectedSection === phase.path ? 'bg-green-200' : ''} px-2 py-1 rounded mb-2`}
+                    >
                         {phase.name}
                     </li>
                 ))}
             </ul>
         </div>
+
+
+
     );
 }
 

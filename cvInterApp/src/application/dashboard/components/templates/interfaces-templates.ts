@@ -50,4 +50,6 @@ export interface Template5Props {
   setTemplate: (templateId: number) => void;
   setName: (name: string) => void;
   setLastName: (lastName: string) => void;
+  setTitulo: (titulo: string) => void;
+  setBio: (bio: string) => void;
 }

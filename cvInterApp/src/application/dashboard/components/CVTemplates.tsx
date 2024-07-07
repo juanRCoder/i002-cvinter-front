@@ -1,22 +1,44 @@
 import ProgressNav from "./ProgressNav"
-import { Outlet } from "react-router-dom"
-import CVPreview from "./views/CVPreview"
+import { Outlet, useLocation } from "react-router-dom"
+import CVPreview from "./views/CVPreview";
+
 
 const CVTemplates = () => {
-    return (
-        <div className="flex flex-col h-screen">
-
-            <ProgressNav />
-            <div className=" flex flex-grow mt-4">
-                <div className=" font-bold bg-slate-700 w-1/2 pr-2 h-full overflow-y-auto ">
-                    <Outlet />
-                </div>
-                <div className=" font-bold bg-slate-500 w-1/2 pl-2 h-full overflow-y-auto">
-                    <CVPreview />
-                </div>
+    const location = useLocation()
+    if (location.pathname === "/CVTemplates") {
+        return (
+            <div className="flex flex-col h-screen overflow-hidden">
+                <ProgressNav />
+                <Outlet />
             </div>
-        </div>
-    );
+        );
+    }
+    else {
+        return (
+            <>
+                <ProgressNav />
+                <div className="flex">
+                    <div className="w-1/2 p-4">
+                        <div className="mb-4">
+                            <Outlet />
+                        </div>
+                    </div>
+                    <div className="w-1/2 p-4">
+                        <div className="mb-4">
+                            <h2 className="text-lg font-semibold">CVPREVIEW HERE</h2>
+                        </div>
+                        <div className="flex justify-center">
+                            <CVPreview />
+                        </div>
+                    </div>
+                </div>
+            </>
+
+
+        )
+    }
+
+
 };
 
 export default CVTemplates

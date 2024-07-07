@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: "templates",
+        path: "CVTemplates",
         element: <CVTemplates />,
         children: [
           {

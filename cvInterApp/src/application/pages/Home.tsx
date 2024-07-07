@@ -16,10 +16,10 @@ const Home = () => {
       <Hero />
       <Features />
       <Product />
-    <HowItWorks />
-    <Contact />
-    <Footer />
-    <NotFound />
+      <HowItWorks />
+      <Contact />
+      <Footer />
+      <NotFound />
 
     </div>
   );
