@@ -18,4 +18,6 @@ export const useCvStore = create<Template5Props>((set)=> ({
     setTemplate: (templateId) => set({ template: templateId }),
     setName: (name) => set({ name }),
     setLastName: (lastName) => set({ lastName }),
+    setTitulo: (titulo) => set({titulo}),
+    setBio: (bio) => set({bio})
 })) 
