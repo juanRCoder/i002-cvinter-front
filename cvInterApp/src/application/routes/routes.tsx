@@ -15,6 +15,8 @@ import TechSkills from "../dashboard/components/views/TechSkills";
 import OtherData from "../dashboard/components/views/OtherData";
 import Upload from "../dashboard/components/views/Upload";
 import App from "../../App";
+import HowItWorks from "../pages/HowItWorks";
+import Contact from "../pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -80,9 +82,22 @@ const router = createBrowserRouter([
         element: <About />
       },
       {
-        path: "*",
+        path: "/NotFound",
         element: <NotFound />,
       },
+      {
+        path: "/HowItWorks",
+        element: <HowItWorks />,
+      },
+      {
+        path: "/Contact",
+        element: <Contact />,
+      },
+      {
+        path: "/Home",
+        element: <Home />,
+      },
+
     ]
   }
 
