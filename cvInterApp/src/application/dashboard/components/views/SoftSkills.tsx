@@ -18,9 +18,7 @@ const SoftSkills = () => {
         setSkill(updatedSkills);
     };
 
-    const addSoftSkills = () => {
-        setSkill([...skill, '']);
-    }
+    const addSoftSkills = () => setSkill([...skill, '']);
 
     const handleNext = () => {
         navigate("../other-data");

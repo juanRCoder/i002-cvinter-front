@@ -1,8 +1,9 @@
 import ProgressNav from "./ProgressNav"
 import { Outlet, useLocation } from "react-router-dom"
 // import CVPreview from "./views/CVPreview";
-import Template4 from "./templates/Template4";
+// import Template4 from "./templates/Template4";
 import { useCvStore } from "../../zustand/store/CvStore";
+import Template5 from "./templates/Template5";
 
 
 const CVTemplates = () => {
@@ -94,33 +95,35 @@ const CVTemplates = () => {
         return (
             <>
                 <ProgressNav />
-                <div className="flex">
-                    <div className="w-1/2 p-4">
-                        <div className="mb-4">
-                            <Outlet />
+                <div className="flex items-center justify-center">
+                    <section className="flex max-w-7xl">
+                        <div className="w-1/2 p-4">
+                            <div className="mb-4">
+                                <Outlet />
+                            </div>
                         </div>
-                    </div>
-                    <div className="w-1/2 p-4">
-                        <div className="mb-4">
-                            <h2 className="text-lg font-semibold">CVPREVIEW HERE</h2>
+                        <div className="w-1/2 p-4">
+                            <div className="mb-4">
+                                <h2 className="text-lg font-semibold">CVPREVIEW HERE</h2>
+                            </div>
+                            <div className="overflow-hidden overflow-y-auto" style={{ maxHeight: '38rem' }}>
+                                <Template5
+                                    name={name || `Olivia`}
+                                    lastName={lastName || `Wilson`}
+                                    titulo={titulo || `Lic en Administracion`}
+                                    bio={bio || bioUser}
+                                    redes={redes || redesUser}
+                                    education={education || educationUser}
+                                    location={location || locationUser}
+                                    experiencia={experiencia || experienciaUser}
+                                    techSkills={techSkills || techSkillsUser}
+                                    idiomas={idiomas || idiomasUser}
+                                    certificados={certificados || certificadosUser}
+                                    softSkills={softSkills || softSkillsUser}
+                                />
+                            </div>
                         </div>
-                        <div className="overflow-hidden overflow-y-auto" style={{ maxHeight: '38rem' }}>
-                            <Template4
-                                name={name || `Olivia`}
-                                lastName={lastName || `Wilson`}
-                                titulo={titulo || `Lic en Administracion`}
-                                bio={bio || bioUser}
-                                redes={redes || redesUser}
-                                education={education || educationUser}
-                                location={location || locationUser}
-                                experiencia={experiencia || experienciaUser}
-                                techSkills={techSkills || techSkillsUser}
-                                idiomas={idiomas ||idiomasUser}
-                                certificados={certificados || certificadosUser}
-                                softSkills={softSkills || softSkillsUser}
-                            />
-                        </div>
-                    </div>
+                    </section>
                 </div>
             </>
 

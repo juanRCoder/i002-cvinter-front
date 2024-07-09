@@ -16,23 +16,12 @@ const TechSkills = () => {
 
     const handleChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        const updateSkills = skill.map((skill, i) => (
-            i === index ? { ...skill, [name]: value } : skill
-        ));
+        const updateSkills = skill.map((skill, i) => (i === index ? { ...skill, [name]: value } : skill));
         setTechSkills(updateSkills);
         setSkill(updateSkills);
     };
 
-    const addExperience = () => {
-        setSkill([
-            ...skill,
-            {
-                skill: '',
-                nivel: '',
-            }
-        ]);
-    };
-
+    const addExperience = () => setSkill([...skill,{ skill: '', nivel: '',}]);
 
     const handleNext = () => {
         navigate("../soft-skills")

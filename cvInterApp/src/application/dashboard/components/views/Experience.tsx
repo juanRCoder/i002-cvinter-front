@@ -16,19 +16,12 @@ const Experience = () => {
 
     const handleChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        const updatedExperiences = experiences.map((experience, i) => (
-            i === index ? { ...experience, [name]: value } : experience
-        ));
+        const updatedExperiences = experiences.map((experience, i) => (i === index ? { ...experience, [name]: value } : experience));
         setExperiences(updatedExperiences);
         setExperiencia(updatedExperiences);
     };
 
-    const addExperience = () => {
-        setExperiences([
-            ...experiences,
-            { profesion: '', empresa: '', dateStart: '', dateEnd: '', rol: '' }
-        ]);
-    };
+    const addExperience = () => setExperiences([...experiences,{ profesion: '', empresa: '', dateStart: '', dateEnd: '', rol: '' }]);
 
     const handleNext = () => {
         navigate("../education");

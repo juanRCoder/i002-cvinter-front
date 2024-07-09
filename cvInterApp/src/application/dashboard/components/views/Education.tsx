@@ -23,18 +23,7 @@ const Education = () => {
         setEducation(updatedEducation);
     };
 
-    const addExperience = () => {
-        setEducationState([
-            ...education,
-            {
-                instituto: "",
-                carrera: "",
-                nivel: "",
-                anoStart: 0,
-                anoEnd: 0,
-            },
-        ]);
-    };
+    const addExperience = () => setEducationState([...education, { instituto: "", carrera: "", nivel: "", anoStart: 0, anoEnd: 0, },]);
 
     const handleNext = () => {
         navigate("../tech-skills");
@@ -82,7 +71,7 @@ const Education = () => {
                             value={edu.anoEnd}
                             className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                         />
-                       <input
+                        <input
                             type="text"
                             id={`nivel-${index}`}
                             name="nivel"
