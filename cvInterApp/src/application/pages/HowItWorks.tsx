@@ -9,7 +9,7 @@ interface StepProps {
 const Step: React.FC<StepProps> = ({ image, title, description }) => {
   return (
     <div className="text-center p-4 flex flex-col items-center">
-      <img src={image} alt={title} className="mx-auto rounded-lg mb-4 w-full h-auto max-w-xs" />
+      <img src={image} alt={title} className="mx-auto rounded-lg mb-4 w-[200px] h-auto max-w-xs" />
       <h3 className="font-bold text-xl mb-2">{title}</h3>
       <p className="text-gray-600">{description}</p>
     </div>

@@ -8,22 +8,22 @@ interface NavigationItem {
 }
 
 const navigation: NavigationItem[] = [
-  { name: 'Inicio', href: '#' },
-  { name: 'Cómo funciona', href: '#' },
+  { name: 'Inicio', href: '/Home' },
+  { name: 'Cómo funciona', href: '/HowItWorks' },
   { name: 'Plantillas', href: '/CVTemplates' },
-  { name: 'Contacto', href: '#' },
+  { name: 'Contacto', href: '/Contact' },
 ];
 
-export default function Example() {
+const Example: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="bg-white">
-      <header className="absolute inset-x-0 top-0 z-50">
+    <div className="bg-white pt-0 pb-6">
+      <header className="relative inset-x-0 top-0 z-50 ">
         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only">CV Inter App</span>
               <img
                 className="h-20 w-20"
                 src="src/assets/cvinter_logo_1.png"
@@ -40,7 +40,7 @@ export default function Example() {
                 {item.name}
               </a>
             ))}
-            <a href="#" className="text-sm font-semibold leading-6 text-gray-900 hover:bg-[#94B9FF] rounded-md px-3 py-2">
+            <a href="/Login" className="text-sm font-semibold leading-6 text-gray-900 hover:bg-[#94B9FF] rounded-md px-3 py-2">
               Log in <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
@@ -50,10 +50,10 @@ export default function Example() {
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
+                <span className="sr-only">CV Inter App</span>
                 <img
                   className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                  src="src/assets/cvinter_logo_1.png"
                   alt=""
                 />
               </a>
@@ -74,7 +74,7 @@ export default function Example() {
                 </div>
                 <div className="py-6">
                   <a
-                    href="#"
+                    href="/Login"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-[#94B9FF]"
                   >
                     Log in
@@ -88,3 +88,5 @@ export default function Example() {
     </div>
   );
 }
+
+export default Example;
