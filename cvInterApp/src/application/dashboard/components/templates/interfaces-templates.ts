@@ -16,7 +16,7 @@ export interface Redes {
   red: string;
   user: string;
 }
-export interface techSkills {
+export interface TechSkills {
   skill: string;
   nivel: string;
 }
@@ -30,26 +30,20 @@ export interface Certificados {
   ano: number;
 }
 export interface Location {
-  texto: string;
-  location: string;
+  red: string;
+  user: string;
 }
 export interface Template5Props {
-  name: string;
-  lastName: string;
+  name?: string;
+  lastName?: string;
   titulo?: string;
   bio?: string;
-  education: Education[];
-  experiencia: Experiencia[];
-  redes: Redes[];
-  techSkills: techSkills[];
-  idiomas: Idiomas[];
-  certificados: Certificados[];
-  softSkills: string[];
-  location: Location[];
-  template: number | null; 
-  setTemplate: (templateId: number) => void;
-  setName: (name: string) => void;
-  setLastName: (lastName: string) => void;
-  setTitulo: (titulo: string) => void;
-  setBio: (bio: string) => void;
+  education?: Education[];
+  experiencia?: Experiencia[];
+  redes?: Redes[];
+  techSkills?: TechSkills[];
+  idiomas?: Idiomas[];
+  certificados?: Certificados[];
+  softSkills?: string[];
+  location?: Location[];
 }

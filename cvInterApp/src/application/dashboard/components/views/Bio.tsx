@@ -5,11 +5,12 @@ import React from "react";
 
 const Bio: React.FC = () => {
     const navigate = useNavigate();
-    const { bio, name, lastName, titulo, setName, setLastName, setTitulo, setBio } = useCvStore();
+    const { bio, setBio, name, setName, lastName, setLastName, titulo, setTitulo, redes = [], location = [], addRed, editRed, removeRed, addLocation, editLocation, removeLocation } = useCvStore();
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = event.target;
-        // funcion pa actualizar el estado global con los inputs
+
+        // Update corresponding state based on input name
         switch (name) {
             case "bio":
                 setBio(value);
@@ -22,6 +23,33 @@ const Bio: React.FC = () => {
                 break;
             case "lastName":
                 setLastName(value);
+                break;
+            case "linkedin":
+            case "github":
+            case "portfolio":
+            case "behance":
+                if (value) {
+                    if (redes.find(red => red.red === name)) {
+                        editRed(name, value);
+                    } else {
+                        addRed({ red: name, user: value });
+                    }
+                } else {
+                    removeRed(name);
+                }
+                break;
+            case "email":
+            case "telephone":
+            case "address":
+                if (value) {
+                    if (location.find(loc => loc.red === name)) {
+                        editLocation(name, value);
+                    } else {
+                        addLocation({ red: name, user: value });
+                    }
+                } else {
+                    removeLocation(name);
+                }
                 break;
             default:
                 break;
@@ -43,7 +71,7 @@ const Bio: React.FC = () => {
                         <textarea
                             name="bio"
                             value={bio}
-                            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setBio(e.target.value)}
+                            onChange={handleChange}
                             placeholder="Cuéntanos un poco sobre ti..."
                             className="w-full h-12 p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none resize-none"
                         ></textarea>
@@ -68,17 +96,29 @@ const Bio: React.FC = () => {
                             />
                             <input
                                 type="text"
-                                placeholder="Ubicación"
+                                id="address"
+                                name="address"
+                                placeholder="Location"
+                                onChange={handleChange}
+                                value={location.find(loc => loc.red === 'address')?.user || ''}
                                 className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                             />
                             <input
                                 type="text"
-                                placeholder="Teléfono"
+                                id="telephone"
+                                name="telephone"
+                                placeholder="Telefono"
+                                onChange={handleChange}
+                                value={location.find(loc => loc.red === 'telephone')?.user || ''}
                                 className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                             />
                             <input
-                                type="email"
+                                type="text"
+                                id="email"
+                                name="email"
                                 placeholder="Email"
+                                onChange={handleChange}
+                                value={location.find(loc => loc.red === 'email')?.user || ''}
                                 className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                             />
                             <input
@@ -98,22 +138,38 @@ const Bio: React.FC = () => {
                         <div className="grid grid-cols-2 gap-2">
                             <input
                                 type="text"
+                                id="github"
+                                name="github"
                                 placeholder="Github"
+                                onChange={handleChange}
+                                value={redes.find(red => red.red === 'github')?.user || ''}
                                 className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                             />
                             <input
                                 type="text"
+                                id="linkedin"
+                                name="linkedin"
                                 placeholder="Linkedin"
+                                onChange={handleChange}
+                                value={redes.find(red => red.red === 'linkedin')?.user || ''}
                                 className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                             />
                             <input
                                 type="text"
+                                id="portfolio"
+                                name="portfolio"
                                 placeholder="Portfolio"
+                                onChange={handleChange}
+                                value={redes.find(red => red.red === 'portfolio')?.user || ''}
                                 className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                             />
                             <input
                                 type="text"
+                                id="behance"
+                                name="behance"
                                 placeholder="Behance"
+                                onChange={handleChange}
+                                value={redes.find(red => red.red === 'behance')?.user || ''}
                                 className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                             />
                         </div>
@@ -128,5 +184,4 @@ const Bio: React.FC = () => {
     );
 };
 
-
-export default Bio
+export default Bio;

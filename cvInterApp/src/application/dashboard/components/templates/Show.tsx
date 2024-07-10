@@ -69,9 +69,9 @@ function Show() {
         },
     ]
     const locationUser = [
-        { location: 'telephone', texto: '1257326' },
-        { location: 'email', texto: 'OliviaWilson@gmail.com' },
-        { location: 'address', texto: 'Calle Cualquiera 123, Cualquier Lugar' }
+        { red: 'telephone', user: '1257326' },
+        { red: 'email', user: 'OliviaWilson@gmail.com' },
+        { red: 'address', user: 'Calle Cualquiera 123, Cualquier Lugar' }
     ]
     const softSkillsUser = ['liderazgo', 'Iniciativa', 'Inteligencia Emocional', 'Comunicacion'];
     const bioUser = "Soy una persona proactiva, organizada y responsable. Disfruto trabajar en equipo y aportar ideas nuevas. Busco un puesto desafiante y dinámico donde pueda continuar aprendiendo y sumando experiencia."
@@ -96,14 +96,14 @@ function Show() {
                 lastName="Wilson"
                 titulo="Lic en Administracion"
                 bio={bioUser}
-                education={educationUser}
+                education={educationUser || []}
                 location={locationUser}
-                experiencia={experienciaUser}
-                redes={redesUser}
-                techSkills={techSkillsUser}
-                idiomas={idiomasUser}
-                certificados={certificadosUser}
-                softSkills={softSkillsUser}
+                experiencia={experienciaUser || []}
+                redes={redesUser || []}
+                techSkills={techSkillsUser || []}
+                idiomas={idiomasUser || []}
+                certificados={certificadosUser || []}
+                softSkills={softSkillsUser || []}
             />
         </>
     )
