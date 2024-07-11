@@ -3,11 +3,28 @@ import { Outlet, useLocation } from "react-router-dom"
 // import CVPreview from "./views/CVPreview";
 // import Template4 from "./templates/Template4";
 import { useCvStore } from "../../zustand/store/CvStore";
-import Template5 from "./templates/Template5";
-
+// import Template5 from "./templates/Template5";
+import './CVTemplates.css';
+import Template4 from "./templates/Template4";
+import { useRef } from 'react';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 const CVTemplates = () => {
-    const { name, lastName, bio, titulo, redes, experiencia, education, techSkills, softSkills, idiomas, certificados, location } = useCvStore();
+    const cvRef = useRef<HTMLDivElement>(null);
+
+    const handleDownloadPdf = async () => {
+        const cvElement = cvRef.current!;
+        const canvas = await html2canvas(cvElement, { scale: 5 });
+        const data = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+
+        pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('CVinter-curriculum.pdf');
+    };
+    const { name, lastName, bio, titulo, experiencia, education, techSkills, softSkills, idiomas, certificados, personaInfo } = useCvStore();
     const educationUser = [
         {
             instituto: 'Universidad Increible',
@@ -30,28 +47,22 @@ const CVTemplates = () => {
             empresa: 'Empresa Increible',
             dateStart: 'Agosto 2019',
             dateEnd: 'Presente',
-            rol: 'Asistencia administrativa integral a Gerencia.Seguimiento de Agenda.Revision de idoneidad de documentos y control de archivos. Creacion de Presentaciones mensuales.'
+            descripcion: 'Asistencia administrativa integral a Gerencia.Seguimiento de Agenda.Revision de idoneidad de documentos y control de archivos. Creacion de Presentaciones mensuales.'
         },
         {
             profesion: 'Asistencia de Administrativo',
             empresa: 'Empresa Fauget',
             dateStart: 'Enero 2016',
             dateEnd: 'Julio 2017',
-            rol: 'Recepcion de Clientes, Manejo de Conmutador.Asistencia a mesa de entradas. Organizacion de libros de entrada y salidas.Mantenimiento de archivos.'
+            descripcion: 'Recepcion de Clientes, Manejo de Conmutador.Asistencia a mesa de entradas. Organizacion de libros de entrada y salidas.Mantenimiento de archivos.'
         },
         {
             profesion: 'Pasante Administrativo',
             empresa: 'Empresa Fauget',
             dateStart: 'Enero 2016',
             dateEnd: 'Julio 2017',
-            rol: 'Recepcion de Clientes, Manejo de Conmutador.Asistencia a mesa de entradas. Organizacion de libros de entrada y salidas.'
+            descripcion: 'Recepcion de Clientes, Manejo de Conmutador.Asistencia a mesa de entradas. Organizacion de libros de entrada y salidas.'
         }
-    ]
-    const redesUser = [
-        { red: 'github', user: 'OliviaWilson' },
-        { red: 'linkedin', user: 'OliviaWilson123' },
-        { red: 'portfolio', user: 'PortfolioOlivia' },
-        { red: 'behance', user: 'BehanceOlivia123' }
     ]
     const techSkillsUser = [
         { skill: 'javascript', nivel: 'intermedio' },
@@ -74,10 +85,14 @@ const CVTemplates = () => {
             ano: 2022
         },
     ]
-    const locationUser = [
-        { red: 'telephone', user: '1257326' },
-        { red: 'email', user: 'OliviaWilson@gmail.com' },
-        { red: 'address', user: 'Calle Cualquiera 123, Cualquier Lugar' }
+    const infoUser = [
+        { icon: 'github', dato: 'OliviaWilson' },
+        { icon: 'linkedin', dato: 'OliviaWilson123' },
+        { icon: 'portfolio', dato: 'PortfolioOlivia' },
+        { icon: 'behance', dato: 'BehanceOlivia123' },
+        { icon: 'email', dato: 'OliviaWilson@gmail.com' },
+        { icon: 'telephone', dato: '1257326' },
+        { icon: 'address', dato: 'Calle Cualquiera 123, Cualquier Lugar' }
     ]
     const softSkillsUser = ['liderazgo', 'Iniciativa', 'Inteligencia Emocional', 'Comunicacion'];
     const bioUser = "Soy una persona proactiva, organizada y responsable. Disfruto trabajar en equipo y aportar ideas nuevas. Busco un puesto desafiante y dinámico donde pueda continuar aprendiendo y sumando experiencia."
@@ -106,15 +121,14 @@ const CVTemplates = () => {
                             <div className="mb-4">
                                 <h2 className="text-lg font-semibold">CVPREVIEW HERE</h2>
                             </div>
-                            <div className="overflow-hidden overflow-y-auto" style={{ maxHeight: '38rem' }}>
-                                <Template5
+                            <div ref={cvRef} className="outline outline-1 outline-slate-600/30">
+                                <Template4
                                     name={name || `Olivia`}
                                     lastName={lastName || `Wilson`}
                                     titulo={titulo || `Lic en Administracion`}
                                     bio={bio || bioUser}
-                                    redes={redes || redesUser}
                                     education={education || educationUser}
-                                    location={location || locationUser}
+                                    personaInfo={personaInfo || infoUser}
                                     experiencia={experiencia || experienciaUser}
                                     techSkills={techSkills || techSkillsUser}
                                     idiomas={idiomas || idiomasUser}
@@ -122,6 +136,9 @@ const CVTemplates = () => {
                                     softSkills={softSkills || softSkillsUser}
                                 />
                             </div>
+                            <button onClick={handleDownloadPdf} className="fixed z-50 right-4 top-1 text-xs rounded-full border border-solid border-zinc-800 bg-stone-200 px-4 py-2 text-slate-900 hover:bg-slate-900 hover:text-stone-200">
+                                DESCARGAR CV
+                            </button>
                         </div>
                     </section>
                 </div>

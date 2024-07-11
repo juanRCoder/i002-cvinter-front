@@ -3,7 +3,7 @@ export interface Experiencia {
   empresa?: string;
   dateStart?: string;
   dateEnd?: string;
-  rol?: string;
+  descripcion?: string;
 }
 export interface Education {
   instituto?: string;
@@ -11,10 +11,6 @@ export interface Education {
   nivel?: string;
   anoStart?: number;
   anoEnd?: number;
-}
-export interface Redes {
-  red: string;
-  user: string;
 }
 export interface TechSkills {
   skill: string;
@@ -29,9 +25,9 @@ export interface Certificados {
   entidadEmisora: string;
   ano: number;
 }
-export interface Location {
-  red: string;
-  user: string;
+export interface Info {
+  icon: string;
+  dato: string;
 }
 export interface Template5Props {
   name?: string;
@@ -40,10 +36,9 @@ export interface Template5Props {
   bio?: string;
   education?: Education[];
   experiencia?: Experiencia[];
-  redes?: Redes[];
   techSkills?: TechSkills[];
   idiomas?: Idiomas[];
   certificados?: Certificados[];
   softSkills?: string[];
-  location?: Location[];
+  personaInfo?: Info[];
 }
