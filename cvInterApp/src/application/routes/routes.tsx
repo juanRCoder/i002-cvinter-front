@@ -17,6 +17,7 @@ import Upload from "../dashboard/components/views/Upload";
 import App from "../../App";
 import HowItWorks from "../pages/HowItWorks";
 import Contact from "../pages/Contact";
+import Show from "../dashboard/components/templates/Show";
 
 const router = createBrowserRouter([
   {
@@ -97,7 +98,10 @@ const router = createBrowserRouter([
         path: "/Home",
         element: <Home />,
       },
-
+      {
+        path: "/upload-pdf",
+        element: <Show />
+      }
     ]
   }
 

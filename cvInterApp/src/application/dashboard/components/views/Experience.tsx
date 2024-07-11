@@ -11,7 +11,7 @@ const Experience = () => {
         empresa: '',
         dateStart: '',
         dateEnd: '',
-        rol: ''
+        descripcion: ''
     }]);
 
     const handleChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +21,7 @@ const Experience = () => {
         setExperiencia(updatedExperiences);
     };
 
-    const addExperience = () => setExperiences([...experiences,{ profesion: '', empresa: '', dateStart: '', dateEnd: '', rol: '' }]);
+    const addExperience = () => setExperiences([...experiences,{ profesion: '', empresa: '', dateStart: '', dateEnd: '', descripcion: '' }]);
 
     const handleNext = () => {
         navigate("../education");
@@ -71,11 +71,11 @@ const Experience = () => {
                         />
                         <input
                             type="text"
-                            id={`rol-${index}`}
-                            name="rol"
+                            id={`descripcion-${index}`}
+                            name="descripcion"
                             placeholder="Carga aquí los detalles de tu experiencia"
                             onChange={(e) => handleChange(index, e)}
-                            value={experience.rol}
+                            value={experience.descripcion}
                             className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
                         />
                     </div>
