@@ -28,7 +28,7 @@ const SelectTemplate = () => {
         { id: 5, src: clasico, alt: "Plantilla 5", name: "Clasico" }
     ];
 
-    const handleSelect = (templateId) => {
+    const handleSelect = (templateId: number) => {
         setTemplate(templateId);
     };
 

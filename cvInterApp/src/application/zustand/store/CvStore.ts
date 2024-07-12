@@ -29,18 +29,18 @@ interface CvStore extends Template5Props {
 
 export const useCvStore = create<CvStore>((set) => ({
   templateSelected: 0,
-  // name: "Olivia",
-  // lastName: "Wilson",
-  // titulo: "Lic. en comunicacion",
-  // bio: "Soy una persona proactiva, organizada y responsable. Disfruto trabajar en equipo y aportar ideas nuevas. Busco un puesto desafiante y dinámico donde pueda continuar aprendiendo y sumando experiencia.",
-  // personaInfo: [
-  //   { icon: 'telephone', dato: '1257326' },
-  //   { icon: 'address', dato: 'Calle Cualquiera 123, Cualquier Lugar' },
-  //   { icon: 'github', dato: 'OliviaWilson' },
-  //   { icon: 'linkedin', dato: 'OliviaWilson123' },
-  //   { icon: 'portfolio', dato: 'PortfolioOlivia' },
-  //   { icon: 'behance', dato: 'BehanceOlivia123' }
-  // ],
+  name: "Olivia",
+  lastName: "Wilson",
+  titulo: "Lic. en comunicacion",
+  bio: "Soy una persona proactiva, organizada y responsable. Disfruto trabajar en equipo y aportar ideas nuevas. Busco un puesto desafiante y dinámico donde pueda continuar aprendiendo y sumando experiencia.",
+  personaInfo: [
+    { icon: 'telephone', dato: '1257326' },
+    { icon: 'address', dato: 'Calle Cualquiera 123, Cualquier Lugar' },
+    { icon: 'github', dato: 'OliviaWilson' },
+    { icon: 'linkedin', dato: 'OliviaWilson123' },
+    { icon: 'portfolio', dato: 'PortfolioOlivia' },
+    { icon: 'behance', dato: 'BehanceOlivia123' }
+  ],
   techSkills: [
     { skill: "javascript", nivel: "intermedio" },
     { skill: "python", nivel: "basico" },
