@@ -10,23 +10,23 @@ const ProgressNav = () => {
     }, [location.pathname]);
 
     const phases = [
-        { path: '', name: 'Select template' },
+        { path: '', name: 'Elige Plantilla' },
         { path: 'bio', name: 'Bio' },
-        { path: 'experience', name: 'Experience' },
-        { path: 'education', name: 'Education' },
-        { path: 'tech-skills', name: 'Tech skills' },
-        { path: 'soft-skills', name: 'Soft skills' },
-        { path: 'other-data', name: 'Other data' },
-        { path: 'upload', name: 'Upload' }
+        { path: 'experience', name: 'Experiencia' },
+        { path: 'education', name: 'Educacion' },
+        { path: 'tech-skills', name: 'Tech Skills' },
+        { path: 'soft-skills', name: 'Soft Skills' },
+        { path: 'other-data', name: 'Otros Datos' },
+        { path: 'upload', name: 'Descarga' }
     ];
 
     return (
-        <div className="w-full flex justify-center h-auto pt-10 pb-4">
-            <ul className="flex flex-wrap justify-center gap-2 md:gap-3 p-2">
+        <div className="">
+            <ul className="m-auto max-w-7xl flex items-center justify-center">
                 {phases.map((phase, index) => (
                     <li
                         key={index}
-                        className={`font-medium text-sm md:text-base ${selectedSection === phase.path ? 'bg-green-200' : ''} px-2 py-1 rounded mb-2`}
+                        className={`${selectedSection === phase.path ? 'bg-green-200' : ''} transition font-normal text-md font-lato text-gray-900/80 mx-2 py-2 px-4 rounded-full`}
                     >
                         {phase.name}
                     </li>
