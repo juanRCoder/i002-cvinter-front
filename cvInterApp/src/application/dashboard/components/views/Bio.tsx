@@ -51,21 +51,21 @@ const Bio: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
-            <h2 className="text-lg font-semibold mb-4">Carga tu información</h2>
-            <div className="w-full max-w-md p-4 border border-gray-200 rounded-lg shadow-lg bg-white">
-                <form className="space-y-3">
+        <div className="font-lato flex flex-col ">
+            <h2 className="text-xl text-zinc-700 mb-4">Carga tu información</h2>
+            <div className=" bg-white">
+                <form className="">
                     {/* Sección "Sobre mí" */}
                     <section className="space-y-3">
-                        <h3 className="text-sm font-semibold">Sobre mí</h3>
+                        <h3 className="text-base text-zinc-800 mt-2">Sobre mí</h3>
                         <textarea
                             name="bio"
                             value={bio}
                             onChange={handleChange}
-                            placeholder="Cuéntanos un poco sobre ti..."
-                            className="w-full h-12 p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none resize-none"
+                            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                            className="w-full h-24 p-2 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none resize-none"
                         ></textarea>
-                        <div className="grid grid-cols-2 gap-2">
+                        <div className="grid grid-cols-2 gap-4">
                             <input
                                 type="text"
                                 placeholder="Nombre"
@@ -73,7 +73,7 @@ const Bio: React.FC = () => {
                                 name="name"
                                 value={name}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                             />
                             <input
                                 type="text"
@@ -82,7 +82,7 @@ const Bio: React.FC = () => {
                                 name="lastName"
                                 value={lastName}
                                 onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                             />
                             <input
                                 type="text"
@@ -91,7 +91,7 @@ const Bio: React.FC = () => {
                                 placeholder="Location"
                                 onChange={handleChange}
                                 value={personaInfo.find(loc => loc.icon === 'address')?.dato || ''}
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                             />
                             <input
                                 type="text"
@@ -100,7 +100,7 @@ const Bio: React.FC = () => {
                                 placeholder="Telefono"
                                 onChange={handleChange}
                                 value={personaInfo.find(inf => inf.icon === 'telephone')?.dato || ''}
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                             />
                             <input
                                 type="text"
@@ -109,7 +109,7 @@ const Bio: React.FC = () => {
                                 placeholder="Email"
                                 onChange={handleChange}
                                 value={personaInfo.find(inf => inf.icon === 'email')?.dato || ''}
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                             />
                             <input
                                 type="text"
@@ -117,7 +117,7 @@ const Bio: React.FC = () => {
                                 onChange={handleChange}
                                 name="titulo"
                                 placeholder="Título profesional"
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                             />
                         </div>
                     </section>

@@ -28,28 +28,32 @@ const SelectTemplate = () => {
         { id: 5, src: clasico, alt: "Plantilla 5", name: "Clasico" }
     ];
 
-    const handleSelect = (templateId: number) => {
+    const handleSelect = (templateId) => {
         setTemplate(templateId);
     };
 
     return (
-        <div className="flex flex-col justify-between h-screen">
-            <div className="p-4 mx-auto max-w-screen-md">
-                <p className="text-left text-gray-700 text-lg pt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nostrum accusantium facere architecto dolor perferendis dolore ratione deserunt.
-                </p>
-            </div>
-            <div className="bg-gray-200 p-4 flex flex-col items-center mt-0">
-                <div className="flex justify-center gap-9 flex-wrap">
+        <section className="flex flex-col">
+            <article className="m-auto max-w-7xl w-full">
+                <div className="ml-16 mt-8 my-12">
+                    <p className="leading-relaxed text-gray-900/80 text-lg pt-2" style={{ width: '52rem' }}>
+                        Todas nuestras plantillas serán exportadas en formato PDF tamaño A4 al terminar la carga de datos.
+                        Puedes optar por un CV con diseño y estilo o uno más formal.<br />
+                        Lo importante es que refleje tu gusto, personalidad y que se adapte a tu peril profesional.
+                    </p>
+                </div>
+            </article>
+            <div className="pt-16 outline-1 bg-gray-200 flex flex-col items-center mt-0">
+                <div className="flex justify-center gap-12 flex-wrap">
                     {templatesArray.map((templateItem) => (
                         <div
                             key={templateItem.id}
-                            className="flex flex-col items-center mb-2"
+                            className="flex flex-col items-center"
                         >
                             <img
                                 src={templateItem.src}
                                 alt={templateItem.alt}
-                                className="max-w-350px] max-h-[250px] cursor-pointer border-2 box-border"
+                                className="max-w-320px] max-h-[220px] cursor-pointer border-2 box-border"
                                 style={{
                                     borderColor: template === templateItem.id ? '#3182CE' : 'transparent',
                                 }}
@@ -59,15 +63,13 @@ const SelectTemplate = () => {
                         </div>
                     ))}
                 </div>
-                <div className="flex justify-center mt-2">
-                    <NextButton
-                        onClick={handleClick}
-                        label="Seleccionar plantilla"
-                        disabled={!template}
-                    />
+                <div className="flex justify-center my-10">
+                    <NextButton onClick={handleClick} label="Continuar" disabled={!template} />
                 </div>
             </div>
         </div>
+
+
     );
 };
 

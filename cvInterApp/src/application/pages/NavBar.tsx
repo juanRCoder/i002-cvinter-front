@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Dialog, DialogPanel } from '@headlessui/react';
 import ButtonNav from './ButtonNav';
+import { AiOutlineUser } from "react-icons/ai";
+import { Link, useLocation } from 'react-router-dom';
+import logo1 from '../../assets/cvinter_logo_1.png'
 
 interface NavigationItem {
   name: string;
@@ -9,39 +12,58 @@ interface NavigationItem {
 
 const navigation: NavigationItem[] = [
   { name: 'Inicio', href: '/Home' },
-  { name: 'Cómo funciona', href: '/HowItWorks' },
+  { name: 'Cómo funciona', href: '#comoFunciona' },
   { name: 'Plantillas', href: '/CVTemplates' },
-  { name: 'Contacto', href: '/Contact' },
+  { name: 'Contacto', href: '#contact' },
 ];
 
-const Example: React.FC = () => {
+const Navbar: React.FC = () => {
+  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isCVTemplatesRoute = location.pathname === '/CVTemplates';
 
   return (
-    <div className="bg-white pt-0 pb-6">
+    <div id='home' className="max-w-7xl m-auto">
       <header className="relative inset-x-0 top-0 z-50 ">
         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
-            <a className="-m-1.5 p-1.5">
-              <span className="sr-only">CV Inter App</span>
-              <img
-                className="h-20 w-20"
-                src="src/assets/cvinter_logo_1.png"
-                alt="Your Company"
-              />
+            <a className="">
+              <div className='h-20 w-20'>
+                <img
+                  className="h-full w-full"
+                  src={logo1}
+                  alt="Your Company"
+                />
+              </div>
             </a>
           </div>
           <div className="flex lg:hidden">
             <ButtonNav onClick={() => setMobileMenuOpen(true)} />
           </div>
-          <div className="hidden lg:flex lg:gap-x-12 lg:flex-1 lg:justify-end">
-            {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900 hover:bg-[#94B9FF] rounded-md px-3 py-2">
-                {item.name}
-              </a>
+          <div className="lg:items-center hidden lg:flex lg:gap-16">
+          {navigation.map((item) => (
+            !isCVTemplatesRoute 
+              ? (              
+                  item.href === '/Home' || item.href === '/CVTemplates' ? (
+                    <Link key={item.name} to={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black text-center transition-all">
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <a key={item.name} href={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black transition-all">
+                      {item.name}
+                    </a>
+                  )
+                )
+              : (
+                  item.href === '/Home' || item.href === '/CVTemplates' ? (
+                    <Link key={item.name} to={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black hover:font-semibold text-center transition-all">
+                      {item.name}
+                    </Link>
+                  ) : null
+                )
             ))}
-            <a href="/Login" className="text-sm font-semibold leading-6 text-gray-900 hover:bg-[#94B9FF] rounded-md px-3 py-2">
-              Log in <span aria-hidden="true">&rarr;</span>
+            <a href="/Login" className="h-10 w-10 flex items-center justify-center text-2xl rounded-full outline outline-4 outline-blue-logo">
+              <AiOutlineUser/>
             </a>
           </div>
         </nav>
@@ -89,4 +111,4 @@ const Example: React.FC = () => {
   );
 }
 
-export default Example;
+export default Navbar;

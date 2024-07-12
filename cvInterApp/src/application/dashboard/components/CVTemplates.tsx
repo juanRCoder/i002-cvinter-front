@@ -1,11 +1,11 @@
 import ProgressNav from "./ProgressNav"
 import { Outlet, useLocation } from "react-router-dom"
+import { useCvStore } from "../../zustand/store/CvStore";
+import './CVTemplates.css';
+import Template4 from "./templates/Template4";
 import { useRef } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { useCvStore } from "../../zustand/store/CvStore";
-import Template1 from "./templates/Template1";
-
 
 const CVTemplates = () => {
     const cvRef = useRef<HTMLDivElement>(null);
@@ -98,7 +98,8 @@ const CVTemplates = () => {
     const locationns = useLocation()
     if (locationns.pathname === "/CVTemplates") {
         return (
-            <div className="flex flex-col h-screen overflow-hidden">
+            <div className="">
+                <Navbar />
                 <ProgressNav />
                 <Outlet />
             </div>
@@ -107,19 +108,20 @@ const CVTemplates = () => {
     else {
         return (
             <>
+                <Navbar />
                 <ProgressNav />
                 <div className="flex items-center justify-center">
-                    <section className="flex max-w-7xl">
-                        <div className="w-1/2 p-4">
-                            <div className="mb-4">
+                    <section className="flex max-w-7xl mt-10 gap-10">
+                        <div className="w-1/2">
+                            <div className="">
                                 <Outlet />
                             </div>
                         </div>
-                        <div className="w-1/2 p-4">
+                        <div className="w-1/2">
                             <div className="mb-4">
                             </div>
                             <div ref={cvRef} className="outline outline-1 outline-slate-600/30">
-                                <Template1
+                                <Template4
                                     name={name || `Olivia`}
                                     lastName={lastName || `Wilson`}
                                     titulo={titulo || `Lic en Administracion`}
