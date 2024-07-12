@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFacebookF, FaInstagram, FaDiscord } from "react-icons/fa";
+import phone1 from '../../assets/phone1.png';
 
 import './Contact.css';
 
@@ -17,7 +18,7 @@ const ContactUs: React.FC = () => {
                     <div className='' style={{height: '35rem'}}>
                         <img 
                             className='w-full h-full object-cover'
-                            src='./src/assets/phone1.png' 
+                            src={phone1}
                             alt='imgContact' 
                             title='Contact'
                         />

@@ -9,6 +9,7 @@ import CVsoft from '../../assets/cvTemplates/CV-Soft.png';
 import CVnew from '../../assets/cvTemplates/CV-New.png';
 import CVclasico from '../../assets/cvTemplates/CV-Clasico.png';
 import { Link } from 'react-router-dom';
+import HeroImages from '../../assets/Heroimages.png'
 
 interface StatProps {
   count: number;
@@ -81,7 +82,7 @@ const MainPage: React.FC = () => {
           <div className="lg:w-1/2 mt-10 lg:mt-0 lg:pl-8">
             <img
               className="h-full w-full rounded-lg"
-              src="src/assets/Heroimages.png"
+              src={HeroImages}
               alt="Person working on laptop"
             />
           </div>
