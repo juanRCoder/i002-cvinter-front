@@ -5,7 +5,7 @@ import { HiIdentification } from "react-icons/hi2";
 import { FaBehanceSquare } from "react-icons/fa";
 import { Template5Props } from "./interfaces-templates";
 
-const Template5: React.FC<Template5Props> = ({ name, lastName, bio, titulo, education, location, experiencia, redes, techSkills, idiomas, certificados, softSkills }) => {
+const Template5: React.FC<Template5Props> = ({ name, lastName, bio, titulo, education, experiencia, personaInfo, techSkills, idiomas, certificados, softSkills }) => {
   return (
     <main className="w-full h-full bg-stone-50 outline outline-1 outline-stone-200 scale-95" style={{ maxWidth: '45rem' }}>
      <section className="py-24">
@@ -14,16 +14,38 @@ const Template5: React.FC<Template5Props> = ({ name, lastName, bio, titulo, educ
           <h3 className="text-center pt-2 text-xl tracking-widest mb-4">{titulo}</h3>
         </header>
         <section className="flex mx-14 mb-2 gap-2 justify-center text-xs">
-          {redes && redes.map(x => (
-            <div key={x.user} className="flex items-center">
-              {x.red == 'github' ? <FaGithub />
-                : (x.red == 'linkedin' ? <FaLinkedin />
-                  : (x.red == 'portfolio' ? <HiIdentification />
-                    : (x.red == 'behance' ? <FaBehanceSquare />
-                      : '')))}
-              <p>{x.user}</p>
-            </div>
-          ))}
+         {personaInfo && personaInfo.map(x => (
+              <div key={x.dato} className="flex items-center gap-2">
+                {(() => {
+                  switch (x.icon) {
+                    case 'github':
+                      return <FaGithub />;
+                    case 'linkedin':
+                      return <FaLinkedin />;
+                    case 'portfolio':
+                      return <HiIdentification />;
+                    case 'behance':
+                      return <FaBehanceSquare />;
+                    default:
+                      return null;
+                  }
+                })()}
+                {(() => {
+                  switch (x.icon) {
+                    case 'github':
+                      return <p>{x.dato}</p>;
+                    case 'linkedin':
+                      return <p>{x.dato}</p>;
+                    case 'portfolio':
+                      return <p>{x.dato}</p>;
+                    case 'behance':
+                      return <p>{x.dato}</p>;
+                    default:
+                      return null;
+                  }
+                })()}
+              </div>
+            ))}
         </section>
         <section className="flex gap-5 mx-24 justify-center text-xs">
           {idiomas && idiomas.map((x, i) => (
@@ -42,15 +64,34 @@ const Template5: React.FC<Template5Props> = ({ name, lastName, bio, titulo, educ
               <p className="text-3xl italic font-thin tracking-tighter">CONTACTO</p>
             </header>
             <aside className="mt-5 mb-10 flex flex-col gap-5">
-              {location && location.map((x, i) => (
-                <p key={i} className="flex items-center gap-5 font-semibold tex-sm">
-                  {x.red == 'telephone' ? <FaSquarePhone className="text-2xl" />
-                    : (x.red == 'email' ? <MdEmail className="text-2xl" />
-                    : (x.red == 'address' ? <FaLocationDot className="text-2xl" />
-                    : ''))}
-                 {x.user}
-                </p>
-              ))}
+            {personaInfo && personaInfo.map(x => (
+              <div key={x.icon} className="flex items-center gap-2">
+                {(() => {
+                  switch (x.icon) {
+                    case 'email':
+                      return <MdEmail />;
+                    case 'telephone':
+                      return <FaSquarePhone />;
+                    case 'address':
+                      return <FaLocationDot />;
+                    default:
+                      return null;
+                  }
+                })()}
+                {(() => {
+                  switch (x.icon) {
+                    case 'telephone':
+                      return <p>{x.dato}</p>;
+                    case 'address':
+                      return <p>{x.dato}</p>;
+                    case 'email':
+                      return <p>{x.dato}</p>;
+                    default:
+                      return null;
+                  }
+                })()}
+              </div>
+            ))}
             </aside>
             {education && education.length > 0 && (
               <header className="mb-5 flex justify-start items-center gap-3">
@@ -91,7 +132,7 @@ const Template5: React.FC<Template5Props> = ({ name, lastName, bio, titulo, educ
                   <h3 className="text-lg font-semibold">{x.profesion}</h3>
                   <p className="font-semibold">{x.empresa}</p>
                   <span className="font-thin italic">{x.dateStart}  -  {x.dateEnd}</span>
-                  <p className="text-sm">{x.rol}</p>
+                  <p className="text-sm">{x.descripcion}</p>
                 </div>
               ))}
             </section>

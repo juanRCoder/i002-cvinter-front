@@ -30,10 +30,10 @@ export interface Info {
   dato: string;
 }
 export interface Template5Props {
-  templateSelected: number;
-  name?: string;
-  lastName?: string;
-  titulo?: string;
+  templateSelected?: number;
+  name: string | undefined;
+  lastName: string | undefined;
+  titulo: string | undefined;
   bio?: string;
   education?: Education[];
   experiencia?: Experiencia[];
