@@ -50,7 +50,6 @@ const SelectTemplate = () => {
                             key={templateItem.id}
                             className="flex flex-col items-center"
                         >
-
                             <section className="h-60 w-44 shadow-xl">
                                 <img
                                     src={templateItem.src}
