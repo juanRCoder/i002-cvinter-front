@@ -1,4 +1,8 @@
 import React from 'react';
+import People1 from '../../assets/people1.png'
+import People2 from '../../assets/people2.png'
+import People3 from '../../assets/people3.png'
+import People4 from '../../assets/people4.png'
 
 interface StepProps {
   image: string;
@@ -34,7 +38,7 @@ const HowItWorks: React.FC = () => {
           </div>
           <div className=" flex justify-center">
             <img
-              src="src/assets/people1.png"
+              src={People1}
               alt="Elige una plantilla"
               className="scale-90 rounded-lg w-full h-full"
             />
@@ -43,21 +47,21 @@ const HowItWorks: React.FC = () => {
         <div className="flex flex-wrap justify-center gap-14">
           <div className="">
             <Step
-              image="src/assets/people4.png"
+              image={People4}
               title="Elige una plantilla"
               description="Selecciona entre 12 plantillas profesionales que se adapten a tu estilo y sector. Tenemos modelos de diseño y Harvard."
             />
           </div>
           <div className="">
             <Step
-              image="src/assets/people3.png"
+              image={People3}
               title="Completa tu información"
               description="Carga tu contacto, bio, experiencia, educación y habilidades, también puedes agregar otros datos."
             />
           </div>
           <div className="">
             <Step
-              image="src/assets/people2.png"
+              image={People2}
               title="¡Chequea y descarga!"
               description="Chequea que los datos sean correctos y ¡sí! tienes tu CV profesional listo para compartir con reclutadores."
             />
