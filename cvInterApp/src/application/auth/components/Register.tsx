@@ -135,10 +135,7 @@ const Register: React.FC = () => {
                     </form>
                 </div>
             </div>
-
-
         </div >
-
     )
 };
 

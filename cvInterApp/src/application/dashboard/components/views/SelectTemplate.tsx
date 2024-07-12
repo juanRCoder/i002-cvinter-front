@@ -1,20 +1,22 @@
-import { useNavigate } from "react-router-dom";
 import NextButton from "../NextButton";
-import { useCvStore } from "../../../zustand/store/CvStore";
 import clasico from "../../../../assets/cvTemplates/CV-Clasico.png";
 import ejecutivo from "../../../../assets/cvTemplates/CV-Ejecutivo.png";
 import elegante from "../../../../assets/cvTemplates/CV-Elegante.png";
 import newCv from "../../../../assets/cvTemplates/CV-New.png";
 import soft from "../../../../assets/cvTemplates/CV-Soft.png";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useCvStore } from "../../../zustand/store/CvStore";
+
 
 const SelectTemplate = () => {
+
     const navigate = useNavigate();
-    const { template, setTemplate } = useCvStore((state) => ({
-        template: state.template,
-        setTemplate: state.setTemplate,
-    }));
+    const setTemplateSelected = useCvStore((state) => state.setTemplateSelected);
+    const [template, setTemplate] = useState<number>(0)
 
     const handleClick = () => {
+        setTemplateSelected(template);
         navigate("bio");
     };
 
@@ -47,7 +49,7 @@ const SelectTemplate = () => {
                             <img
                                 src={templateItem.src}
                                 alt={templateItem.alt}
-                                className="max-w-320px] max-h-[220px] cursor-pointer border-2 box-border"
+                                className="max-w-350px] max-h-[250px] cursor-pointer border-2 box-border"
                                 style={{
                                     borderColor: template === templateItem.id ? '#3182CE' : 'transparent',
                                 }}
@@ -66,8 +68,6 @@ const SelectTemplate = () => {
                 </div>
             </div>
         </div>
-
-
     );
 };
 
