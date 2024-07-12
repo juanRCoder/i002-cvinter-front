@@ -7,7 +7,7 @@ import Navbar from "../pages/NavBar";
 
 const Home = () => {
   return (
-    <div>
+    <div className="bg-zinc-50 scroll-smooth">
       <Navbar />
       <Hero />
       <HowItWorks />

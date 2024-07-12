@@ -42,26 +42,10 @@ function Show() {
       descripcion: 'Recepcion de Clientes, Manejo de Conmutador.Asistencia a mesa de entradas. Organizacion de libros de entrada y salidas.'
     }
   ]
-  const techSkillsUser = [
-    { skill: 'javascript', nivel: 'intermedio' },
-    { skill: 'python', nivel: 'basico' },
-    { skill: 'react', nivel: 'avanzado' },
-  ]
+
   const idiomasUser = [
     { languaje: 'espanol', nivel: 'nativo' },
     { languaje: 'ingles', nivel: 'basico' }
-  ]
-  const certificadosUser = [
-    {
-      skill: 'JavaScript Developer',
-      entidadEmisora: 'Udemy',
-      ano: 2020
-    },
-    {
-      skill: 'Python Developer',
-      entidadEmisora: 'Platzi',
-      ano: 2022
-    },
   ]
   const InfoUser = [
     { icon: 'telephone', dato: '1257326' },
@@ -83,9 +67,9 @@ function Show() {
         education={education || educationUser}
         personaInfo={personaInfo || InfoUser}
         experiencia={experiencia || experienciaUser}
-        techSkills={techSkills || techSkillsUser}
+        techSkills={techSkills}
         idiomas={idiomas || idiomasUser}
-        certificados={certificados || certificadosUser}
+        certificados={certificados}
         softSkills={softSkills || softSkillsUser}
       />
     </>

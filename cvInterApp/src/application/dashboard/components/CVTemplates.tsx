@@ -4,11 +4,11 @@ import { Outlet, useLocation } from "react-router-dom"
 // import Template4 from "./templates/Template4";
 import { useCvStore } from "../../zustand/store/CvStore";
 // import Template5 from "./templates/Template5";
-import './CVTemplates.css';
 import Template4 from "./templates/Template4";
 import { useRef } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import Navbar from "../../pages/NavBar";
 
 const CVTemplates = () => {
     const cvRef = useRef<HTMLDivElement>(null);
@@ -100,7 +100,8 @@ const CVTemplates = () => {
     const locationns = useLocation()
     if (locationns.pathname === "/CVTemplates") {
         return (
-            <div className="flex flex-col h-screen overflow-hidden">
+            <div className="">
+                 <Navbar />
                 <ProgressNav />
                 <Outlet />
             </div>
@@ -109,15 +110,16 @@ const CVTemplates = () => {
     else {
         return (
             <>
+                <Navbar />
                 <ProgressNav />
                 <div className="flex items-center justify-center">
-                    <section className="flex max-w-7xl">
-                        <div className="w-1/2 p-4">
-                            <div className="mb-4">
+                    <section className="flex max-w-7xl mt-10 gap-10">
+                        <div className="w-1/2">
+                            <div className="">
                                 <Outlet />
                             </div>
                         </div>
-                        <div className="w-1/2 p-4">
+                        <div className="w-1/2">
                             <div className="mb-4">
                                 <h2 className="text-lg font-semibold">CVPREVIEW HERE</h2>
                             </div>
