@@ -30,6 +30,7 @@ export interface Info {
   dato: string;
 }
 export interface Template5Props {
+  templateSelected: number;
   name?: string;
   lastName?: string;
   titulo?: string;

@@ -1,20 +1,22 @@
-import { useNavigate } from "react-router-dom";
 import NextButton from "../NextButton";
-import { useCvStore } from "../../../zustand/store/CvStore";
 import clasico from "../../../../assets/cvTemplates/CV-Clasico.png";
 import ejecutivo from "../../../../assets/cvTemplates/CV-Ejecutivo.png";
 import elegante from "../../../../assets/cvTemplates/CV-Elegante.png";
 import newCv from "../../../../assets/cvTemplates/CV-New.png";
 import soft from "../../../../assets/cvTemplates/CV-Soft.png";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useCvStore } from "../../../zustand/store/CvStore";
+
 
 const SelectTemplate = () => {
+
     const navigate = useNavigate();
-    const { template, setTemplate } = useCvStore((state) => ({
-        template: state.template,
-        setTemplate: state.setTemplate,
-    }));
+    const setTemplateSelected = useCvStore((state) => state.setTemplateSelected);
+    const [template, setTemplate] = useState<number>(0)
 
     const handleClick = () => {
+        setTemplateSelected(template);
         navigate("bio");
     };
 
@@ -48,6 +50,7 @@ const SelectTemplate = () => {
                             key={templateItem.id}
                             className="flex flex-col items-center"
                         >
+
                             <section className="h-60 w-44 shadow-xl">
                                 <img
                                     src={templateItem.src}
@@ -60,14 +63,14 @@ const SelectTemplate = () => {
                                 />
                             </section>
                             <p className="mt-1 text-center text-gray-700">{templateItem.name}</p>
-                        </div>
+                        </div >
                     ))}
-                </div>
+                </div >
                 <div className="flex justify-center my-10">
                     <NextButton onClick={handleClick} label="Continuar" disabled={!template} />
                 </div>
-            </div>
-        </section>
+            </div >
+        </section >
     );
 };
 
