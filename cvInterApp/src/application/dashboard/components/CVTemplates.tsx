@@ -22,79 +22,6 @@ const CVTemplates = () => {
         pdf.save('CVinter-curriculum.pdf');
     };
     const { name, lastName, bio, titulo, experiencia, education, techSkills, softSkills, idiomas, certificados, personaInfo } = useCvStore();
-    const cvArrayData = {
-        educationUser: [
-            {
-                instituto: 'Universidad Increible',
-                carrera: 'Lic. en Administracion',
-                nivel: 'Terciario',
-                anoStart: 2015,
-                anoEnd: 2018
-            },
-            {
-                instituto: 'Colegio Secundario Fauget',
-                carrera: 'Bachillier en Economia',
-                nivel: 'Tecnico',
-                anoStart: 2018,
-                anoEnd: 2022
-            }
-        ],
-        experienciaUser: [
-            {
-                profesion: 'Asistencia de Gerencia',
-                empresa: 'Empresa Increible',
-                dateStart: 'Agosto 2019',
-                dateEnd: 'Presente',
-                descripcion: 'Asistencia administrativa integral a Gerencia.Seguimiento de Agenda.Revision de idoneidad de documentos y control de archivos. Creacion de Presentaciones mensuales.'
-            },
-            {
-                profesion: 'Asistencia de Administrativo',
-                empresa: 'Empresa Fauget',
-                dateStart: 'Enero 2016',
-                dateEnd: 'Julio 2017',
-                descripcion: 'Recepcion de Clientes, Manejo de Conmutador.Asistencia a mesa de entradas. Organizacion de libros de entrada y salidas.Mantenimiento de archivos.'
-            },
-            {
-                profesion: 'Pasante Administrativo',
-                empresa: 'Empresa Fauget',
-                dateStart: 'Enero 2016',
-                dateEnd: 'Julio 2017',
-                descripcion: 'Recepcion de Clientes, Manejo de Conmutador.Asistencia a mesa de entradas. Organizacion de libros de entrada y salidas.'
-            }
-        ],
-        techSkillsUser: [
-            { skill: 'javascript', nivel: 'intermedio' },
-            { skill: 'python', nivel: 'basico' },
-            { skill: 'react', nivel: 'avanzado' },
-        ],
-        idiomasUser: [
-            { languaje: 'espanol', nivel: 'nativo' },
-            { languaje: 'ingles', nivel: 'basico' }
-        ],
-        certificadosUser: [
-            {
-                skill: 'JavaScript Developer',
-                entidadEmisora: 'Udemy',
-                ano: 2020
-            },
-            {
-                skill: 'Python Developer',
-                entidadEmisora: 'Platzi',
-                ano: 2022
-            },
-        ],
-        infoUser: [
-            { icon: 'github', dato: 'OliviaWilson' },
-            { icon: 'linkedin', dato: 'OliviaWilson123' },
-            { icon: 'portfolio', dato: 'PortfolioOlivia' },
-            { icon: 'behance', dato: 'BehanceOlivia123' },
-            { icon: 'email', dato: 'OliviaWilson@gmail.com' },
-            { icon: 'telephone', dato: '1257326' },
-            { icon: 'address', dato: 'Calle Cualquiera 123, Cualquier Lugar' }
-        ],
-        softSkillsUser: ['liderazgo', 'Iniciativa', 'Inteligencia Emocional', 'Comunicacion'],
-        bioUser: "Soy una persona proactiva, organizada y responsable. Disfruto trabajar en equipo y aportar ideas nuevas. Busco un puesto desafiante y dinámico donde pueda continuar aprendiendo y sumando experiencia."
-    }
     const locationns = useLocation()
     if (locationns.pathname === "/CVTemplates") {
         return (
@@ -122,17 +49,17 @@ const CVTemplates = () => {
                             </div>
                             <div ref={cvRef} className="outline outline-1 outline-slate-600/30">
                                 <Template4
-                                    name={name || `Olivia`}
-                                    lastName={lastName || `Wilson`}
-                                    titulo={titulo || `Lic en Administracion`}
-                                    bio={bio || cvArrayData.bioUser}
-                                    education={education || cvArrayData.educationUser}
-                                    personaInfo={personaInfo || cvArrayData.infoUser}
-                                    experiencia={experiencia || cvArrayData.experienciaUser}
-                                    techSkills={techSkills || cvArrayData.techSkillsUser}
-                                    idiomas={idiomas || cvArrayData.idiomasUser}
-                                    certificados={certificados || cvArrayData.certificadosUser}
-                                    softSkills={softSkills || cvArrayData.softSkillsUser}
+                                    name={name}
+                                    lastName={lastName}
+                                    titulo={titulo}
+                                    bio={bio}
+                                    education={education}
+                                    personaInfo={personaInfo}
+                                    experiencia={experiencia}
+                                    techSkills={techSkills}
+                                    idiomas={idiomas}
+                                    certificados={certificados}
+                                    softSkills={softSkills}
                                 />
                             </div>
                             <button onClick={handleDownloadPdf} className="fixed z-50 right-4 top-1 text-xs rounded-full border border-solid border-zinc-800 bg-stone-200 px-4 py-2 text-slate-900 hover:bg-slate-900 hover:text-stone-200">
