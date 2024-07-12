@@ -50,26 +50,27 @@ const SelectTemplate = () => {
                             key={templateItem.id}
                             className="flex flex-col items-center"
                         >
-                            <img
-                                src={templateItem.src}
-                                alt={templateItem.alt}
-                                className="max-w-320px] max-h-[220px] cursor-pointer border-2 box-border"
-                                style={{
-                                    borderColor: template === templateItem.id ? '#3182CE' : 'transparent',
-                                }}
-                                onClick={() => handleSelect(templateItem.id)}
-                            />
+
+                            <section className="h-60 w-44 shadow-xl">
+                                <img
+                                    src={templateItem.src}
+                                    alt={templateItem.alt}
+                                    className="h-full w-full cursor-pointer border-2 box-border"
+                                    style={{
+                                        borderColor: template === templateItem.id ? '#3182CE' : 'transparent',
+                                    }}
+                                    onClick={() => handleSelect(templateItem.id)}
+                                />
+                            </section>
                             <p className="mt-1 text-center text-gray-700">{templateItem.name}</p>
-                        </div>
+                        </div >
                     ))}
-                </div>
+                </div >
                 <div className="flex justify-center my-10">
                     <NextButton onClick={handleClick} label="Continuar" disabled={!template} />
                 </div>
-            </div>
-        </div>
-
-
+            </div >
+        </section >
     );
 };
 

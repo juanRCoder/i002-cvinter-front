@@ -1,11 +1,11 @@
 import ProgressNav from "./ProgressNav"
 import { Outlet, useLocation } from "react-router-dom"
 import { useCvStore } from "../../zustand/store/CvStore";
-import './CVTemplates.css';
 import Template4 from "./templates/Template4";
 import { useRef } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import Navbar from "../../pages/NavBar";
 
 const CVTemplates = () => {
     const cvRef = useRef<HTMLDivElement>(null);
@@ -142,8 +142,6 @@ const CVTemplates = () => {
                     </section>
                 </div>
             </>
-
-
         )
     }
 
