@@ -103,7 +103,7 @@ const Template5: React.FC<Template5Props> = ({ name, lastName, bio, titulo, educ
               {education && education.map(x => (
                 <div key={x.instituto} className="mb-5">
                   <p className="font-bold">{x.instituto}  {x.nivel}</p>
-                  <p className="italic">{x.carrera} {x.anoStart}  {x.anoEnd}</p>
+                  <p className="italic">{x.carrera} {x.dateStart}  {x.dateEnd}</p>
                 </div>
               ))}
             </section>

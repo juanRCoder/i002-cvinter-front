@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import './ProgressNav.css';
 
 const ProgressNav = () => {
     const location = useLocation();
@@ -21,7 +22,7 @@ const ProgressNav = () => {
     ];
 
     return (
-        <div className="">
+        <div className="shadow-custom shadow-blue-logo/50 pt-8">
             <ul className="m-auto max-w-7xl flex items-center justify-center">
                 {phases.map((phase, index) => (
                     <li

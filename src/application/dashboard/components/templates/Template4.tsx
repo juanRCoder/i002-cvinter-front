@@ -100,7 +100,7 @@ const Template4: React.FC<Template5Props> = ({ name, lastName, titulo, bio, educ
               {education && education.map(x => (
                 <aside>
                   <div className="flex flex-col">
-                    <p className="">{x.anoStart} {x.anoEnd}</p>
+                    <p className="">{x.dateStart} {x.dateEnd}</p>
                     <p className="font-bold">{x.carrera}</p>
                   </div>
                   <div className="flex flex-col italic">

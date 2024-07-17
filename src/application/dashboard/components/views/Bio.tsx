@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import NextButton from "../NextButton";
 import { useCvStore } from "../../../zustand/store/CvStore";
+import { FaGithub, FaLinkedin, } from "react-icons/fa";
+import { HiIdentification } from "react-icons/hi2";
+import { FaBehanceSquare } from "react-icons/fa";
+
 import React from "react";
 
 const Bio: React.FC = () => {
@@ -51,125 +55,90 @@ const Bio: React.FC = () => {
     };
 
     return (
-        <div className="font-lato flex flex-col ">
-            <h2 className="text-xl text-zinc-700 mb-4">Carga tu información</h2>
+        <div className="scale-95 font-lato flex flex-col ">
             <div className=" bg-white">
                 <form className="">
                     {/* Sección "Sobre mí" */}
-                    <section className="space-y-3">
+                    <article className="space-y-2">
                         <h3 className="text-base text-zinc-800 mt-2">Sobre mí</h3>
                         <textarea
                             name="bio"
                             value={bio}
                             onChange={handleChange}
                             placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                            className="w-full h-24 p-2 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none resize-none"
+                            className="text-sm w-full h-28 p-2 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none resize-none"
                         ></textarea>
-                        <div className="grid grid-cols-2 gap-4">
-                            <input
-                                type="text"
-                                placeholder="Nombre"
-                                id="name"
-                                name="name"
-                                value={name}
-                                onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                placeholder="Apellidos"
-                                id="lastName"
-                                name="lastName"
-                                value={lastName}
-                                onChange={handleChange}
-                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                id="address"
-                                name="address"
-                                placeholder="Location"
-                                onChange={handleChange}
-                                value={personaInfo.find(loc => loc.icon === 'address')?.dato || ''}
-                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                id="telephone"
-                                name="telephone"
-                                placeholder="Telefono"
-                                onChange={handleChange}
-                                value={personaInfo.find(inf => inf.icon === 'telephone')?.dato || ''}
-                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                id="email"
-                                name="email"
-                                placeholder="Email"
-                                onChange={handleChange}
-                                value={personaInfo.find(inf => inf.icon === 'email')?.dato || ''}
-                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                value={titulo}
-                                onChange={handleChange}
-                                name="titulo"
-                                placeholder="Título profesional"
-                                className="w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
-                            />
+                        <div className="grid grid-cols-2 gap-2">
+                            {[
+                                [name, 'name', 'Nombre'],
+                                [lastName, 'lastName', 'Apellido'],
+                                ['address', 'address', 'Ubicacion'],
+                                ['telephone', 'telephone', 'Telefono'],
+                                ['email', 'email', 'Email'],
+                                [titulo, 'titulo', 'Título profesional'],
+                            ].map(([store, txt, placeholder]) => (
+                                txt == 'address' || txt == 'telephone' || txt == 'email'
+                                    ? (
+                                        <input
+                                            key={txt}
+                                            type={txt == 'email' ? 'email' : (txt == 'telephone' ? 'number' : 'text')}
+                                            id={String(txt)}
+                                            name={String(txt)}
+                                            placeholder={placeholder}
+                                            onChange={handleChange}
+                                            value={personaInfo.find(inf => inf.icon === txt)?.dato || ''}
+                                            className="text-sm w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
+                                        />
+                                    )
+                                    : (
+                                        <input
+                                            key={txt}
+                                            type="text"
+                                            id={txt}
+                                            name={txt}
+                                            value={store}
+                                            placeholder={placeholder}
+                                            onChange={handleChange}
+                                            className="text-sm w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
+                                        />
+                                    )
+                            ))}
                         </div>
-                    </section>
+                    </article>
 
                     {/* Sección "Redes Sociales" */}
-                    <section className="space-y-3">
-                        <h3 className="text-sm font-semibold">Redes Sociales</h3>
-                        <div className="grid grid-cols-2 gap-2">
-                            <input
-                                type="text"
-                                id="github"
-                                name="github"
-                                placeholder="Github"
-                                onChange={handleChange}
-                                value={personaInfo.find(inf => inf.icon === 'github')?.dato || ''}
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                id="linkedin"
-                                name="linkedin"
-                                placeholder="Linkedin"
-                                onChange={handleChange}
-                                value={personaInfo.find(inf => inf.icon === 'linkedin')?.dato || ''}
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                id="portfolio"
-                                name="portfolio"
-                                placeholder="Portfolio"
-                                onChange={handleChange}
-                                value={personaInfo.find(inf => inf.icon === 'portfolio')?.dato || ''}
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                            />
-                            <input
-                                type="text"
-                                id="behance"
-                                name="behance"
-                                placeholder="Behance"
-                                onChange={handleChange}
-                                value={personaInfo.find(inf => inf.icon === 'behance')?.dato || ''}
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                            />
-                        </div>
-                    </section>
+                    <article className="space-y-2 mt-6">
+                        <h3 className="text-base text-zinc-800 mt-2">Redes</h3>
+                        <section className="flex flex-col gap-2">
+                            {[
+                                ['github', 'Github', <FaGithub className="h-8 w-8 fill-blue-logo" />],
+                                ['linkedin', 'Linkedin', <FaLinkedin className="h-8 w-8 fill-blue-logo" />],
+                                ['portfolio', 'Portfolio', <HiIdentification className="h-8 w-8 fill-blue-logo" />],
+                                ['behance', 'Behance', <FaBehanceSquare className="h-8 w-8 fill-blue-logo" />],
+                            ].map(([property, name, icon]) => (
+                                <div key={String(property)} className="flex gap-5 items-center">
+                                    <input
+                                        type="text"
+                                        id={String(property)}
+                                        name={String(property)}
+                                        placeholder={String(name)}
+                                        onChange={handleChange}
+                                        value={personaInfo.find(inf => inf.icon === property)?.dato || ''}
+                                        className="text-sm w-full p-2 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
+                                    />
+                                    {icon}
+                                </div>
+                            ))}
+                        </section>
+                    </article>
                 </form>
             </div>
-            <NextButton
-                onClick={handleNext}
-                label="Guardar cambios y continuar"
-            />
+            <div className="mt-10">
+                <NextButton
+                    onClick={handleNext}
+                    label="Guardar cambios y continuar"
+                />
+            </div>
         </div>
     );
 };

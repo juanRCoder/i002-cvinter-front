@@ -1,96 +1,139 @@
+import { FaPlus, FaTrash } from "react-icons/fa";
+import { RiArrowDownSLine } from "react-icons/ri";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NextButton from "../NextButton";
 import { useCvStore } from "../../../zustand/store/CvStore";
+import Modal from "./Modal";
 
 const Education = () => {
     const navigate = useNavigate();
-    const { setEducation } = useCvStore();
-    const [education, setEducationState] = useState([
-        {
-            instituto: "",
-            carrera: "",
-            nivel: "",
-            anoStart: 0,
-            anoEnd: 0,
-        },
-    ]);
+    const { setEducation, education } = useCvStore();
+    const [idIncrement, setIdIncrement] = useState<number>(0);
+    const [openModalId, setOpenModalId] = useState<number | null>(null);
+    const opcionesEducacion = ['Universidad', 'FP/Terciario', 'Bootcamp', 'Cursos/autodidacta']
 
-    const handleChange = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (id: number, event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        const updatedEducation = education.map((edu, i) => i === index ? { ...edu, [name]: value } : edu);
-        setEducationState(updatedEducation);
-        setEducation(updatedEducation);
+        const updatedEducation = education && education.map(edu => edu.id === id ? { ...edu, [name]: value } : edu);
+        if (updatedEducation) setEducation(updatedEducation);
     };
 
-    const addExperience = () => setEducationState([...education, { instituto: "", carrera: "", nivel: "", anoStart: 0, anoEnd: 0, },]);
+    const addEducation = () => {
+        setEducation([...(education || []), { id: idIncrement, instituto: "", carrera: "", nivel: "", dateStart: '', dateEnd: '', },]);
+        setIdIncrement(idIncrement + 1);
+    }
+    const removeEducation = (id: number) => {
+        const updateEducations = education && education.filter(i => i.id !== id)
+        if (updateEducations) setEducation(updateEducations)       
+    }
 
+    const selectOption = (selected: string, id: number) => {
+        const updatedEducation = education && education.map(edu => edu.id === id ? { ...edu, nivel: selected } : edu);
+        if (updatedEducation) setEducation(updatedEducation);
+        setOpenModalId(null);
+    }
     const handleNext = () => {
         navigate("../tech-skills");
     };
 
     return (
         <div className="flex justify-center flex-col">
-            <h2>Education</h2>
-            {education.map((edu, index) => (
-                <section key={index} className="space-y-3 mt-12">
+            <h3 className="text-base text-zinc-800 mt-2 border-b boder-b-blue-logo pb-2">Educaciones</h3>
+            {education && education.map((edu) => (
+                <section key={edu.id} className="first:mt-10 mt-5">
                     <div className="flex flex-col gap-4">
-                        <input
-                            type="text"
-                            id={`instituto-${index}`}
-                            name="instituto"
-                            placeholder="Nombre de la institución donde estudiaste"
-                            onChange={(e) => handleChange(index, e)}
-                            value={edu.instituto}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                        />
-                        <input
-                            type="text"
-                            id={`carrera-${index}`}
-                            name="carrera"
-                            placeholder="Título o nombre del curso o carrera que hiciste"
-                            onChange={(e) => handleChange(index, e)}
-                            value={edu.carrera}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                        />
-                        <input
-                            type="number"
-                            id={`anoStart-${index}`}
-                            name="anoStart"
-                            placeholder="Año de inicio"
-                            onChange={(e) => handleChange(index, e)}
-                            value={edu.anoStart}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                        />
-                        <input
-                            type="number"
-                            id={`anoEnd-${index}`}
-                            name="anoEnd"
-                            placeholder="Año de fin"
-                            onChange={(e) => handleChange(index, e)}
-                            value={edu.anoEnd}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                        />
-                        <input
-                            type="text"
-                            id={`nivel-${index}`}
-                            name="nivel"
-                            placeholder="Nivel de Estudios"
-                            onChange={(e) => handleChange(index, e)}
-                            value={edu.nivel}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                        />
+                        <section className="flex gap-2 items-center justify-between">
+                            <h3 className="font-thin text-zinc-800 mt-2">Educación</h3>
+                            <div
+                                onClick={() => removeEducation(edu.id)}
+                                className="cursor-pointer h-8 w-8 bg-red-500/75 hover:bg-red-400 grid place-items-center rounded-full">
+                                <FaTrash className="fill-white" />
+                            </div>
+                        </section>
+                        <div className="flex flex-col gap-4">
+                            <section className=" flex gap-4">
+                                <div className="flex gap-4 w-full">
+                                    <input
+                                        type="text"
+                                        id={`instituto-${edu.id}`}
+                                        name="instituto"
+                                        placeholder="Nombre de la institución donde estudiaste"
+                                        onChange={(e) => handleChange(edu.id, e)}
+                                        value={edu.instituto}
+                                        className="grow text-sm w-3/5 p-2 py-3 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
+                                    />
+                                    <div className="bg-transparent relative flex items-center w-2/5">
+                                        <input
+                                            type="text"
+                                            id={`nivel-${edu.id}`}
+                                            name="nivel"
+                                            placeholder="Nivel"
+                                            onChange={(e) => handleChange(edu.id, e)}
+                                            onClick={() => setOpenModalId(openModalId === edu.id ? null : edu.id)}
+                                            value={edu.nivel}
+                                            className=" text-sm w-full h-full cursor-pointer p-2  border border-gray-300 rounded-md active:border-blue-2 active:border-spacing-1  outline-none"
+                                            readOnly
+                                        />
+                                        <RiArrowDownSLine onClick={() => setOpenModalId(edu.id)} className="right-3 absolute cursor-pointer text-2xl flex-none fill-gray-600" />
+                                        {openModalId === edu.id && //id seleccionado es igual al id de educacion
+                                            <Modal 
+                                                opciones={opcionesEducacion}
+                                                sendSelected={(selected) => selectOption(selected, edu.id)} //Agregar un parametro que no esta en el modal (edu.id)
+                                            />
+                                        }
+                                    </div>
+                                </div>
+                            </section>
+                            <section className=" flex gap-4">
+                                <div className="flex gap-4 w-full">
+                                    <input
+                                        type="text"
+                                        id={`carrera-${edu.id}`}
+                                        name="carrera"
+                                        placeholder="Título o nombre del curso o carrera que hiciste"
+                                        onChange={(e) => handleChange(edu.id, e)}
+                                        value={edu.carrera}
+                                        className="grow text-sm w-3/5 p-2 py-3 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
+                                    />
+                                </div>
+                                <div className="flex items-center w-[66%] gap-4 text-sm">
+                                    <input
+                                        type="text"
+                                        id={`dateStart-${edu.id}`}
+                                        name="dateStart"
+                                        placeholder="Fecha de inicio"
+                                        onChange={(e) => handleChange(edu.id, e)}
+                                        value={edu.dateStart}
+                                        className="w-1/2 p-2  py-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                                    />
+                                    <input
+                                        type="text"
+                                        id={`dateEnd-${edu.id}`}
+                                        name="dateEnd"
+                                        placeholder="Fecha de fin"
+                                        onChange={(e) => handleChange(edu.id, e)}
+                                        value={edu.dateEnd}
+                                        className="w-1/2 p-2 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                                    />
+                                </div>
+                            </section>
+                        </div>
                     </div>
                 </section>
             ))}
-            <button
-                type="button"
-                onClick={addExperience}
-                className="mt-4 p-2 bg-blue-500 text-white rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-            >
-                Agregar Más Educacion
-            </button>
-            <NextButton onClick={handleNext} label="Continuar" />
+            <div>
+                <button
+                    type="button"
+                    onClick={addEducation}
+                    className="rounded-full mt-4 p-1 grid place-items-center bg-blue-logo hover:bg-blue-2 transition"
+                >
+                    <FaPlus className="fill-white text-2xl font-bold p-1" />
+                </button>
+            </div>
+            <div className="mt-24">
+                <NextButton onClick={handleNext} label="Guardar cambios y continuar" />
+            </div>
         </div>
     );
 };

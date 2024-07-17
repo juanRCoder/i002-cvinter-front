@@ -1,131 +1,171 @@
 import { useNavigate } from "react-router-dom";
 import NextButton from "../NextButton";
 import { useCvStore } from "../../../zustand/store/CvStore";
+import { RiArrowDownSLine } from "react-icons/ri";
 import { useState } from "react";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaTrash } from "react-icons/fa";
+import Modal from "./Modal";
 
 
 const OtherData = () => {
     const navigate = useNavigate();
-    const { setIdiomas, setCertificados } = useCvStore();
-    const [idiomas, setIdiomasState] = useState([
-        {
-            languaje: '',
-            nivel: '',
-        }
-    ]);
-    const [certificados, setCertificadosState] = useState([
-        {
-            skill: '',
-            entidadEmisora: '',
-            ano: 0,
-        }
-    ]);
+    const { setIdiomas, idiomas, setCertificados, certificados } = useCvStore();
+    const [lnModal, setLnModal] = useState<string | null>(null);
+    // const [idModalCertificado, setIdModalCertificado] = useState<number | null>(null);
+    const [idIncrement, setIdIncrement] = useState<number>(0);
+    const lvlIdioma = ['principiante', 'intermedio', 'avanzado', 'nativo'];
 
     const handleChangeIdiomas = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        const updatedIdiomas = idiomas.map((idioma, i) => i === index ? { ...idioma, [name]: value } : idioma);
-        setIdiomasState(updatedIdiomas);
-        setIdiomas(updatedIdiomas);
+        const updatedIdiomas = idiomas?.map((idioma, i) => i === index ? { ...idioma, [name]: value } : idioma);
+        if (updatedIdiomas) setIdiomas(updatedIdiomas);
     };
 
-    const handleChangeCertificados = (index: number, event: React.ChangeEvent<HTMLInputElement>) => {
+    const addIdioma = () => {
+        setIdiomas([...idiomas || [], { languaje: '', nivel: '' }]);
+    }
+    const removeIdioma = (idioma: string) => {
+        const updatedIdiomas = idiomas?.filter(ln => ln.languaje !== idioma);
+        if (updatedIdiomas) setIdiomas(updatedIdiomas);
+    }
+    const handleSelectOption = (lvl: string, ln: string) => {
+        const updatedIdiomas = idiomas?.map(prev => ({ ...prev, nivel: ln === prev.languaje ? lvl : prev.nivel }));
+        if (updatedIdiomas) setIdiomas(updatedIdiomas);
+
+    }
+
+    const handleChangeCertificados = (id: number, event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        const updatedCertificados = certificados.map((certificado, i) => i === index ? { ...certificado, [name]: value } : certificado);
-        setCertificadosState(updatedCertificados);
-        setCertificados(updatedCertificados);
+        const updatedCertificados = certificados?.map((certificado) => certificado.id === id ? { ...certificado, [name]: value } : certificado);
+        if (updatedCertificados) setCertificados(updatedCertificados);
     };
 
-    const addIdioma = () => setIdiomasState([...idiomas, { languaje: '', nivel: '' }]);
-    const addCertificado = () => setCertificadosState([...certificados, { skill: '', entidadEmisora: '', ano: 0 }]);
+    const addCertificado = () => {
+        setCertificados([...certificados || [], { id: idIncrement, skill: '', entidadEmisora: '', ano: '' }]);
+        setIdIncrement(idIncrement + 1)
+    }
+    const removeCertificado = (id: number) => {
+        const updatedCertificados = certificados?.filter(cer => cer.id !== id);
+        if (updatedCertificados) setCertificados(updatedCertificados);
+    }
+
 
     const handleNext = () => {
         navigate("../upload");
     };
 
     return (
-        <div className="px-10">
-            <h2 className="text-gray-900 text-xl mb-4">Carga tu información</h2>
-            <h5 className="text-gray-900/50 font-semibold">Idiomas:</h5>
-            {idiomas.map((idioma, index) => (
-                <section key={index} className="w-96 text-gray-900 mt-4">
-                    <div className="flex flex-col gap-4">
+        <div className="flex justify-center flex-col">
+            <h5 className="text-base text-zinc-800 mt-2 border-b boder-b-blue-logo pb-2">Idiomas:</h5>
+            {idiomas?.map((idioma, index) => (
+                <section key={index} className="first:mt-10 mt-5">
+                    <div className="flex gap-4 items-center">
                         <input
                             type="text"
                             id={`languaje-${index}`}
                             name="languaje"
-                            placeholder="Idioma dominado"
+                            placeholder="Idioma"
                             onChange={(e) => handleChangeIdiomas(index, e)}
                             value={idioma.languaje}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                            className="text-sm grow p-2 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                         />
-                        <input
-                            type="text"
-                            id={`nivel-${index}`}
-                            name="nivel"
-                            placeholder="Nivel"
-                            onChange={(e) => handleChangeIdiomas(index, e)}
-                            value={idioma.nivel}
-                            className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
-                        />
+                        <div className="bg-transparent relative flex items-center flex-none">
+                            <input
+                                type="text"
+                                id={`nivel-${index}`}
+                                name="nivel"
+                                placeholder="Nivel"
+                                onChange={(e) => handleChangeIdiomas(index, e)}
+                                onClick={() => setLnModal(idioma.languaje === lnModal ? null : idioma.languaje)}
+                                value={idioma.nivel}
+                                className="text-sm w-full  cursor-pointer p-2  border border-gray-300 rounded-md active:border-blue-2 active:border-spacing-1  outline-none"
+                            />
+                            <RiArrowDownSLine onClick={() => setLnModal(idioma.languaje === lnModal ? null : idioma.languaje)} className="right-3 absolute cursor-pointer text-2xl flex-none fill-gray-600" />
+                            {lnModal == idioma.languaje &&
+                                <Modal
+                                    opciones={lvlIdioma}
+                                    sendSelected={(selected) => handleSelectOption(selected, idioma.languaje)}
+                                />
+                            }
+                        </div>
+                        <div
+                            onClick={() => removeIdioma(idioma.languaje)}
+                            className="cursor-pointer h-8 w-8 bg-red-500/75 hover:bg-red-400 grid place-items-center rounded-full">
+                            <FaTrash className="fill-white" />
+                        </div>
                     </div>
                 </section>
             ))}
-            <button
-                type="button"
-                onClick={addIdioma}
-                className="rounded-full mt-4 p-1 grid place-items-center bg-blue-logo hover:bg-blue-2 transition"
-            >
-                <FaPlus className="fill-white text-2xl font-bold p-1" />
-            </button>
+            <div>
+                <button
+                    type="button"
+                    onClick={addIdioma}
+                    className="rounded-full mt-4 p-1 grid place-items-center bg-blue-logo hover:bg-blue-2 transition"
+                >
+                    <FaPlus className="fill-white text-2xl font-bold p-1" />
+                </button>
+            </div>
 
-            <h5 className="text-gray-900/50 font-semibold mt-10">Certificados:</h5>
-            {certificados.map((certificado, index) => (
-                <section key={index} className="w-96 text-gray-900 mt-4">
-                    <div className="flex flex-col gap-4">
+            {/*----------------------CERTIFICADO----------------------*/}
+
+            <h3 className="text-base text-zinc-800 mt-12 border-b boder-b-blue-logo pb-2">Certificados:</h3>
+            {certificados?.map((certificado) => (
+                <section key={certificado.id} className="first:mt-10 mt-5">
+                    <section className="flex gap-2 items-center justify-between">
+                        <h3 className="font-thin text-zinc-800">Certicado</h3>
+                        <div
+                            onClick={() => removeCertificado(certificado.id)}
+                            className="cursor-pointer h-8 w-8 bg-red-500/75 hover:bg-red-400 grid place-items-center rounded-full">
+                            <FaTrash className="fill-white" />
+                        </div>
+                    </section>
+                    <div className="flex gap-4 mt-2">
                         <input
                             type="text"
-                            id={`skill-${index}`}
+                            id={`skill-${certificado.id}`}
                             name="skill"
                             placeholder="Nombre de la certificación"
-                            onChange={(e) => handleChangeCertificados(index, e)}
+                            onChange={(e) => handleChangeCertificados(certificado.id, e)}
                             value={certificado.skill}
-                            className="w-full p-2 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500/50 border border-1 outline-none"
+                            className="text-sm grow p-2 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                         />
                         <input
                             type="text"
-                            id={`entidadEmisora-${index}`}
+                            id={`entidadEmisora-${certificado.id}`}
                             name="entidadEmisora"
-                            placeholder="Entidad emisora del certificado"
-                            onChange={(e) => handleChangeCertificados(index, e)}
+                            placeholder="Entidad emisora"
+                            onChange={(e) => handleChangeCertificados(certificado.id, e)}
                             value={certificado.entidadEmisora}
-                            className="w-full p-2 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500/50 border border-1 outline-none"
+                            className="text-sm flex-none p-2 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                         />
                         <input
                             type="number"
-                            id={`ano-${index}`}
+                            id={`ano-${certificado.id}`}
                             name="ano"
-                            placeholder="Año de certificación"
-                            onChange={(e) => handleChangeCertificados(index, e)}
+                            placeholder="Año de expedición"
+                            onChange={(e) => handleChangeCertificados(certificado.id, e)}
                             value={certificado.ano}
-                            className="w-full p-2 text-gray-500 border-gray-300 rounded-lg focus:border-gray-500/50 border border-1 outline-none"
+                            className="w-40 text-sm flex-none p-2 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                         />
                     </div>
                 </section>
             ))}
-            <button
-                type="button"
-                onClick={addCertificado}
-                className="rounded-full mt-4 p-1 grid place-items-center bg-blue-logo hover:bg-blue-2 transition"
-            >
-                <FaPlus className="fill-white text-2xl font-bold p-1" />
-            </button>
+            <div>
+                <button
+                    type="button"
+                    onClick={addCertificado}
+                    className="rounded-full mt-4 p-1 grid place-items-center bg-blue-logo hover:bg-blue-2 transition"
+                >
+                    <FaPlus className="fill-white text-2xl font-bold p-1" />
+                </button>
+            </div>
+            <div className="mt-24">
+                <NextButton
+                    onClick={handleNext}
+                    label="Finalizar"
 
-            <NextButton
-                onClick={handleNext}
-                label="Finalizar"
-
-            />
+                />
+            </div>
         </div>
     );
 };

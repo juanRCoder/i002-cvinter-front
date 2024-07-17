@@ -57,9 +57,9 @@ const Template3: React.FC<Template5Props> = ({ name, lastName, titulo, bio, educ
                                 <p className="bg-gray-800 text-xl text-center font-bold text-yellow-400 p-2 rounded">EDUCACIÓN</p>
                             </header>
                             {education.map(x => (
-                                <div key={x.anoStart} className="mb-4">
+                                <div key={x.dateStart} className="mb-4">
                                     <p className="font-bold text-yellow-300">{x.carrera}</p>
-                                    <p className="text-yellow-400">{x.instituto} - {x.anoStart} {x.anoEnd}</p>
+                                    <p className="text-yellow-400">{x.instituto} - {x.dateStart} {x.dateEnd}</p>
                                     <p className="italic text-yellow-400">{x.nivel}</p>
                                 </div>
                             ))}

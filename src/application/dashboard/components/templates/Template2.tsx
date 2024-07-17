@@ -8,7 +8,7 @@ import { Template5Props } from "./interfaces-templates";
 
 const Template2: React.FC<Template5Props> = ({ name, lastName, titulo, bio, education, personaInfo, experiencia, techSkills, idiomas, certificados, softSkills }) => {
     return (
-        <main className="w-full h-full bg-blue-50 outline outline-1 outline-blue-200 p-8 font-sans">
+        <main className="w-full h-full bg-blue-50 p-8 font-sans">
             <header className="mb-8 text-center bg-blue-200 py-4">
                 <h1 className="text-5xl tracking-wide font-serif text-slate-950">{name} {lastName}</h1>
                 <h3 className="text-xl mt-2 text-slate-800">{titulo}</h3>
@@ -45,9 +45,11 @@ const Template2: React.FC<Template5Props> = ({ name, lastName, titulo, bio, educ
                     </div>
 
                     <article>
-                        <header className="mb-2">
-                            <p className="text-2xl tracking-wide font-semibold text-slate-950 underline decoration-blue-950">SOBRE MI</p>
-                        </header>
+                        {bio && bio.length > 0 && (
+                            <header className="mb-2">
+                                <p className="bg-orange-200 text-center text-2xl tracking-wide font-semibold text-gray-800">SOBRE MI</p>
+                            </header>
+                        )}
                         <p className="text-blue-900">{bio}</p>
                     </article>
 
@@ -57,9 +59,9 @@ const Template2: React.FC<Template5Props> = ({ name, lastName, titulo, bio, educ
                                 <p className="text-2xl tracking-wide font-semibold text-slate-950 underline decoration-blue-950">EDUCACIÓN</p>
                             </header>
                             {education.map(x => (
-                                <div key={x.anoStart} className="mb-4">
+                                <div key={x.dateStart} className="mb-4">
                                     <p className="font-bold text-blue-900">{x.carrera}</p>
-                                    <p className="text-blue-700">{x.instituto} - {x.anoStart} {x.anoEnd}</p>
+                                    <p className="text-blue-700">{x.instituto} - {x.dateStart} {x.dateEnd}</p>
                                     <p className="italic text-blue-700">{x.nivel}</p>
                                 </div>
                             ))}

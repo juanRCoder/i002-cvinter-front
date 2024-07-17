@@ -13,9 +13,11 @@ const SelectTemplate = () => {
 
     const navigate = useNavigate();
     const setTemplateSelected = useCvStore((state) => state.setTemplateSelected);
+    const resetState = useCvStore((state) => state.resetState);
     const [template, setTemplate] = useState<number>(0)
 
     const handleClick = () => {
+        resetState();
         setTemplateSelected(template);
         navigate("bio");
     };
