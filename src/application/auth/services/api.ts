@@ -1,7 +1,22 @@
+// import axios from "axios";
+import { LoginData, UserFormData } from "./types";
 
-import { UserFormData } from "./types";
+export const registerUser = async (data: UserFormData) => {
+    // const response = await axios.post('api/auth/register', data)
+    // return response.data
+    return new Promise((resolve) => {
+        setTimeout(()=> {
+            resolve(data);
+        }, 3000)
+    })
+}
 
-export const registerUser = (data: UserFormData) => {
-    console.log("Operacion post exitosa.", data);
-    //aca va la logica para implementar la dolicitud http POST
+export const loginUser = async (data: LoginData ) => {
+    // const response = await axios.post('api/auth/login', data)
+    // return response.data
+    return new Promise((resolve) => {
+        setTimeout(()=> {
+            resolve(data);
+        }, 3000)
+    })
 }
