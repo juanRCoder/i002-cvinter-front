@@ -4,9 +4,22 @@ import { LoginData } from "../services/types"
 import { ChangeEvent, useState } from "react"
 import { loginValidations } from "../services/validations"
 import { Link } from "react-router-dom"
+import { useMutation } from "@tanstack/react-query"
+import { loginUser } from "../services/api"
 
 
 const Login = () => {
+
+    const mutation = useMutation({
+        mutationFn: loginUser,
+        onSuccess: (data) => {
+            console.log('login onSucces say:', data)
+        },
+        onError: (error) => {
+            console.log('login onError say:', error);
+        }
+    })
+
     const [loginData, setLoginData] = useState<LoginData>({
         email: "",
         password: ""
@@ -32,8 +45,7 @@ const Login = () => {
 
     const handleSubmitForm = (event: React.FormEvent) => {
         event.preventDefault()
-        console.log("Se realizo el intento de login.", loginData);
-
+        mutation.mutate(loginData)
     }
     return (
 

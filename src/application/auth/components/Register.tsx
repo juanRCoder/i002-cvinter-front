@@ -5,8 +5,19 @@ import { ChangeEvent, useState } from "react";
 import { validateInputErrors } from "../services/validations";
 import { registerUser } from "../services/api";
 import { Link } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 
 const Register: React.FC = () => {
+
+    const mutation = useMutation({
+        mutationFn: registerUser,
+        onSuccess: (data) => {
+            console.log('onSuccess say:', data);
+        },
+        onError: (error) => {
+            console.error('onError say:', error);
+        }
+    })
 
     const [formData, setFormData] = useState<UserFormData>({
         name: "",
@@ -35,7 +46,7 @@ const Register: React.FC = () => {
 
     const handleSubmitForm = (event: React.FormEvent) => {
         event.preventDefault()
-        registerUser(formData)
+        mutation.mutate(formData)
     }
 
     return (
@@ -70,7 +81,7 @@ const Register: React.FC = () => {
                                 name="name"
                                 onChange={handleInputChange}
                                 type="text"
-                                placeholder="Enter your name"
+                                placeholder="Enter your full name"
                                 className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#CDFFD8] focus:ring-2 focus:ring-[#CDFFD8]"
                             />
                             {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>}
