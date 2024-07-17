@@ -7,14 +7,16 @@ const Footer = () => {
     <footer className='bg-musgo font-lato pt-10 px-16 pb-4'>
       <div className='max-w-7xl m-auto'>
         <section className='flex justify-between mx-7'>
-          <div className='h-24 w-24'>
-            <img
-              className='w-full h-full object-cover'
-              src={cvinter_white}
-              title='cvinter_logo'
-              alt='cvinter_logo'
-            />
-          </div>
+          <a href='#home'>
+            <div className='h-24 w-24'>
+              <img
+                className='w-full h-full object-cover'
+                src={cvinter_white}
+                title='cvinter_logo'
+                alt='cvinter_logo'
+              />
+            </div>
+          </a>
           <div className='text-white mt-12'>
             <h1 className='text-right font-bold text-lg mb-3'>Links</h1>
             <ul className='text-right flex flex-col gap-4'>

@@ -20,14 +20,23 @@ const navigation: NavigationItem[] = [
 const Navbar: React.FC = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const isCVTemplatesRoute = location.pathname === '/CVTemplates';
+  const isCVTemplatesRoute: boolean = (
+    location.pathname === '/CVTemplates' ||
+    location.pathname === '/CVTemplates/bio' ||
+    location.pathname === '/CVTemplates/experience' ||
+    location.pathname === '/CVTemplates/education' ||
+    location.pathname === '/CVTemplates/tech-skills' ||
+    location.pathname === '/CVTemplates/soft-skills' ||
+    location.pathname === '/CVTemplates/other-data' ||
+    location.pathname === '/CVTemplates/upload'
+  );
 
   return (
     <div id='home' className="max-w-7xl m-auto">
       <header className="relative inset-x-0 top-0 z-50 ">
         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
           <div className="flex lg:flex-1">
-            <a className="">
+            <Link to={'/'} className="">
               <div className='h-20 w-20'>
                 <img
                   className="h-full w-full"
@@ -35,7 +44,7 @@ const Navbar: React.FC = () => {
                   alt="Your Company"
                 />
               </div>
-            </a>
+            </Link>
           </div>
           <div className="flex lg:hidden">
             <ButtonNav onClick={() => setMobileMenuOpen(true)} />
@@ -44,11 +53,13 @@ const Navbar: React.FC = () => {
           {navigation.map((item) => (
             !isCVTemplatesRoute 
               ? (              
-                  item.href === '/Home' || item.href === '/CVTemplates' ? (
+                  item.href === '/Home' || item.href === '/CVTemplates' 
+                  ? (
                     <Link key={item.name} to={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black text-center transition-all">
                       {item.name}
                     </Link>
-                  ) : (
+                    ) 
+                  : (
                     <a key={item.name} href={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black transition-all">
                       {item.name}
                     </a>
