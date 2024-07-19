@@ -18,7 +18,7 @@ const Upload = () => {
                 <p className="text-lg">Puedes editar tu CV todas las veces que necesites.</p>
             </div>
             <div className="mt-12 h-10 flex items-center justify-center">
-                <button onClick={handleDownloadClick} className="cursor-pointer float-right bg-blue-logo text-white py-3 px-12 rounded-md shadow-md hover:bg-blue-2 focus:outline-none focus:ring-2 transition duration-300">
+                <button onClick={handleDownloadClick} className="cursor-pointer float-right bg-blue-logo text-white py-3 px-12 rounded-md shadow-md hover:bg-blue-2 focus:outline-none focus:ring-2 transition">
                     Descargar en PDF
                 </button>
             </div>

@@ -11,7 +11,7 @@ interface NavigationItem {
 }
 
 const navigation: NavigationItem[] = [
-  { name: 'Inicio', href: '/Home' },
+  { name: 'Inicio', href: '/' },
   { name: 'Cómo funciona', href: '#comoFunciona' },
   { name: 'Plantillas', href: '/CVTemplates' },
   { name: 'Contacto', href: '#contact' },
@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
           {navigation.map((item) => (
             !isCVTemplatesRoute 
               ? (              
-                  item.href === '/Home' || item.href === '/CVTemplates' 
+                  item.href === '/' || item.href === '/CVTemplates' 
                   ? (
                     <Link key={item.name} to={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black text-center transition-all">
                       {item.name}
@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
                   )
                 )
               : (
-                  item.href === '/Home' || item.href === '/CVTemplates' ? (
+                  item.href === '/' || item.href === '/CVTemplates' ? (
                     <Link key={item.name} to={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black hover:font-semibold text-center transition-all">
                       {item.name}
                     </Link>

@@ -1,7 +1,8 @@
-import { FaPlus, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import NextButton from "../NextButton";
 import { useCvStore } from "../../../zustand/store/CvStore";
+import { Plus } from "../BtnPlusTrash";
 
 const SoftSkills = () => {
     const navigate = useNavigate();
@@ -14,9 +15,7 @@ const SoftSkills = () => {
         setSoftSkills(updatedSkills);
     };
 
-    const addSoftSkills = () => {
-        setSoftSkills([...softSkills || [], '']);
-    }
+    const addSoftSkills = () => setSoftSkills([...softSkills || [], '']);
     const removeSkill = (item: string) => {
         const updateSoftSkill = softSkills?.filter(skill => skill !== item);
         if (updateSoftSkill) setSoftSkills(updateSoftSkill);
@@ -36,7 +35,7 @@ const SoftSkills = () => {
                         value={item}
                         placeholder="Habilidad Blanda"
                         onChange={(e) => handleChange(index, e)}
-                        className="w-full p-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none"
+                        className="text-sm grow p-2 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                     />
                     <div
                         onClick={() => removeSkill(item)}
@@ -46,13 +45,7 @@ const SoftSkills = () => {
                 </section>
             ))}
             <div>
-                <button
-                    type="button"
-                    onClick={addSoftSkills}
-                    className="rounded-full mt-4 p-1 grid place-items-center bg-blue-logo hover:bg-blue-2 transition"
-                >
-                    <FaPlus className="fill-white text-2xl font-bold p-1" />
-                </button>
+                <Plus setState={addSoftSkills}/>
             </div>
             <div className="mt-24">
                 <NextButton onClick={handleNext} label="Guardar cambios y continuar" />
