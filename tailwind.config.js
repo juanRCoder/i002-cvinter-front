@@ -12,7 +12,8 @@ export default {
         'blue-2': '#6882B4'
       },
       boxShadow: {
-        'custom': 'inset 0 2px 3px #94B9FF;',
+        'custom': 'inset 0 2px 3px #94B9FF',
+        'template': '0 0 10px 0px #7b7b7b',
       }
     },
     fontFamily: {

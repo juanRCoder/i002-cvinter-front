@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import NextButton from "../NextButton";
 import { useCvStore } from "../../../zustand/store/CvStore";
-import { FaPlus, FaTrash } from "react-icons/fa";
 import { ChangeEvent, useState } from "react";
+import { addGroupInputs, removeGroupInputs, updateInputs } from "../../utils/UpdateInfo";
+import Trash, { Plus } from "../BtnPlusTrash";
 
 const Experience = () => {
     const navigate = useNavigate();
@@ -10,18 +11,18 @@ const Experience = () => {
     const { setExperiencia, experiencia } = useCvStore();
 
     const handleChange = (id: number, event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
-        const { name, value } = event.target;
-        const updatedExperiences = experiencia && experiencia.map((experience) => (experience.id === id ? { ...experience, [name]: value } : experience));
-        if (updatedExperiences) setExperiencia(updatedExperiences);
+        updateInputs(id, event, experiencia || [], setExperiencia)
     };
+
+    const newGroup = { id: incrementId, profesion: '', empresa: '', dateStart: '', dateEnd: '', descripcion: '' };
     const addExperience = () => {
-        setExperiencia([...(experiencia || []), { id: incrementId, profesion: '', empresa: '', dateStart: '', dateEnd: '', descripcion: '' }]);
-        setIncrementId(incrementId + 1);
+        addGroupInputs(incrementId, setIncrementId, experiencia || [], setExperiencia, newGroup)
     };
+
     const removeExperience = (id: number) => {
-        const updatedExperiences = experiencia && experiencia.filter(experience => experience.id !== id);
-        if (updatedExperiences) setExperiencia(updatedExperiences);
+        removeGroupInputs(id, experiencia || [], setExperiencia);
     };
+    
     const handleNext = () => {
         navigate("../education");
     };
@@ -34,11 +35,7 @@ const Experience = () => {
                     <div className="flex flex-col gap-4">
                         <section className="flex gap-2 items-center justify-between">
                             <h3 className="font-thin text-zinc-800 mt-2">Experiencia</h3>
-                            <div
-                                onClick={() => removeExperience(experience.id)}
-                                className="cursor-pointer h-8 w-8 bg-red-500/75 hover:bg-red-400 grid place-items-center rounded-full">
-                                <FaTrash className="fill-white" />
-                            </div>
+                           <Trash setState={removeExperience} id={experience.id} />
                         </section>
                         <input
                             type="text"
@@ -77,15 +74,7 @@ const Experience = () => {
                     </div>
                 </section>
             ))}
-            <div>
-                <button
-                    type="button"
-                    onClick={addExperience}
-                    className="rounded-full mt-4 p-1 grid place-items-center bg-blue-logo hover:bg-blue-2 transition"
-                >
-                    <FaPlus className="fill-white text-2xl font-bold p-1" />
-                </button>
-            </div>
+            <Plus setState={addExperience} />
             <div className="mt-24">
                 <NextButton onClick={handleNext} label="Guardar cambios y continuar" />
             </div>

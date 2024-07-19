@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import NextButton from "../NextButton";
 import { useCvStore } from "../../../zustand/store/CvStore";
-import { FaPlus, FaTrash } from "react-icons/fa";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { useState } from "react";
 import Modal from "./Modal";
+import { addGroupInputs, removeGroupInputs, selectedOption, updateInputs } from "../../utils/UpdateInfo";
+import Trash, { Plus } from "../BtnPlusTrash";
 
 const TechSkills = () => {
     const navigate = useNavigate()
@@ -14,27 +15,21 @@ const TechSkills = () => {
     const optionsLevel = ['principiante', 'basico', 'intermedio', 'avanzado']
 
     const handleChange = (id: number, event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        const updateSkills = techSkills && techSkills.map((skill) => (skill.id === id ? { ...skill, [name]: value } : skill));
-        if (updateSkills) setTechSkills(updateSkills);
+        updateInputs(id, event, techSkills || [], setTechSkills)
     };
 
+    const newGroup = { id: idIncrement, skill: '', nivel: '', };
     const addSkill = () => {
-        setTechSkills([...(techSkills || []), { id: idIncrement, skill: '', nivel: '', }]);
-        setIdCrement(idIncrement + 1)
+        addGroupInputs(idIncrement, setIdCrement, techSkills || [], setTechSkills, newGroup)
     }
     const removeSkill = (id: number) => {
-        const updateSkills = techSkills && techSkills.filter(skill => skill.id !== id)
-        if (updateSkills) setTechSkills(updateSkills);
+        removeGroupInputs(id, techSkills || [], setTechSkills);
     }
 
     const selectOption = (selected: string, id: number) => {
-        const updateSkills = techSkills && techSkills.map((skill) => (skill.id === id ? { ...skill, nivel: selected } : skill));
-        if (updateSkills) setTechSkills(updateSkills);
-        setOpenModalId(null);
+        selectedOption(id, selected, setTechSkills, techSkills || [], setOpenModalId)
     }
     
-
     const handleNext = () => {
         navigate("../soft-skills")
     }
@@ -73,23 +68,11 @@ const TechSkills = () => {
                                 />
                             }
                         </div>
-                        <div
-                            onClick={() => removeSkill(skill.id)}
-                            className="cursor-pointer h-8 w-8 bg-red-500/75 hover:bg-red-400 grid place-items-center rounded-full">
-                            <FaTrash className="fill-white" />
-                        </div>
+                        <Trash setState={removeSkill} id={skill.id} />
                     </div>
                 </section>
             ))}
-            <div>
-                <button
-                    type="button"
-                    onClick={addSkill}
-                    className="rounded-full mt-4 p-1 grid place-items-center bg-blue-logo hover:bg-blue-2 transition"
-                >
-                    <FaPlus className="fill-white text-2xl font-bold p-1" />
-                </button>
-            </div>
+            <Plus setState={addSkill} />
             <div className="mt-24">
                 <NextButton onClick={handleNext} label="Guardar cambios y continuar" />
             </div>

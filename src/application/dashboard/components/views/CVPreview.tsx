@@ -6,105 +6,53 @@ import Template3 from "../templates/Template3";
 import Template4 from "../templates/Template4";
 import Template5 from "../templates/Template5";
 
-
 const CVPreview: React.FC = () => {
-    const localCvRef = useRef<HTMLDivElement>(null);
-    const { setCVRef, templateSelected, name, lastName, bio, titulo, experiencia, education, techSkills, softSkills, idiomas, certificados, personaInfo } = useCvStore();
+  const localCvRef = useRef<HTMLDivElement>(null);
+  const { setCVRef, templateSelected, name, lastName, bio, titulo, experiencia, education, techSkills, softSkills, idiomas, certificados, personaInfo } = useCvStore();
 
-    useEffect(() => {
-        setCVRef(localCvRef);
-    }, [setCVRef]);
-    
-    const renderSelectedTemplate = () => {
-        switch (templateSelected) {
-            case 1:
-                return <Template1
-                    templateSelected={templateSelected}
-                    name={name || "Olivia"}
-                    lastName={lastName || "Wilson"}
-                    bio={bio}
-                    titulo={titulo}
-                    experiencia={experiencia}
-                    education={education}
-                    techSkills={techSkills}
-                    softSkills={softSkills}
-                    idiomas={idiomas}
-                    certificados={certificados}
-                    personaInfo={personaInfo}
-                />;
-            case 2:
-                return <Template2
-                    templateSelected={templateSelected}
-                    name={name || "Olivia"}
-                    lastName={lastName || "Wilson"}
-                    bio={bio}
-                    titulo={titulo}
-                    experiencia={experiencia}
-                    education={education}
-                    techSkills={techSkills}
-                    softSkills={softSkills}
-                    idiomas={idiomas}
-                    certificados={certificados}
-                    personaInfo={personaInfo}
-                />;
-            case 3:
-                return <Template3
-                    templateSelected={templateSelected}
-                    name={name || "Olivia"}
-                    lastName={lastName || "Wilson"}
-                    bio={bio}
-                    titulo={titulo}
-                    experiencia={experiencia}
-                    education={education}
-                    techSkills={techSkills}
-                    softSkills={softSkills}
-                    idiomas={idiomas}
-                    certificados={certificados}
-                    personaInfo={personaInfo}
-                />;
-            case 4:
-                return <Template4
-                    templateSelected={templateSelected}
-                    name={name || "Olivia"}
-                    lastName={lastName || "Wilson"}
-                    bio={bio}
-                    titulo={titulo}
-                    experiencia={experiencia}
-                    education={education}
-                    techSkills={techSkills}
-                    softSkills={softSkills}
-                    idiomas={idiomas}
-                    certificados={certificados}
-                    personaInfo={personaInfo}
-                />;
-            case 5:
-                return <Template5
-                    templateSelected={templateSelected}
-                    name={name || "Olivia"}
-                    lastName={lastName || "Wilson"}
-                    bio={bio}
-                    titulo={titulo}
-                    experiencia={experiencia}
-                    education={education}
-                    techSkills={techSkills}
-                    softSkills={softSkills}
-                    idiomas={idiomas}
-                    certificados={certificados}
-                    personaInfo={personaInfo}
-                />;
-            default:
-                return <p>No template selected or template not supported.</p>;
-        }
+  useEffect(() => {
+    setCVRef(localCvRef);
+  }, [setCVRef]);
+
+  const renderSelectedTemplate = () => {
+    const props = {
+      templateSelected,
+      name: name || "Olivia",
+      lastName: lastName || "Wilson",
+      bio,
+      titulo,
+      experiencia,
+      education,
+      techSkills,
+      softSkills,
+      idiomas,
+      certificados,
+      personaInfo
     };
 
-    return (
-        <>
-            <div ref={localCvRef} className="" >
-                {renderSelectedTemplate()}
-            </div>
-        </>
+    switch (templateSelected) {
+      case 1:
+        return <Template1 {...props} />;
+      case 2:
+        return <Template2 {...props} />;
+      case 3:
+        return <Template3 {...props} />;
+      case 4:
+        return <Template4 {...props} />;
+      case 5:
+        return <Template5 {...props} />;
+      default:
+        return <p>No template selected or template not supported.</p>;
+    }
+  };
 
-    );
+  return (
+    <>
+      <span ref={localCvRef} className="p-0 w-0">
+        {renderSelectedTemplate()}
+      </span>
+    </>
+  );
 };
 
 export default CVPreview;

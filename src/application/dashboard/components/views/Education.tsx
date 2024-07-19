@@ -1,10 +1,11 @@
-import { FaPlus, FaTrash } from "react-icons/fa";
 import { RiArrowDownSLine } from "react-icons/ri";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NextButton from "../NextButton";
 import { useCvStore } from "../../../zustand/store/CvStore";
 import Modal from "./Modal";
+import { addGroupInputs, removeGroupInputs, selectedOption, updateInputs } from "../../utils/UpdateInfo";
+import Trash, { Plus } from "../BtnPlusTrash";
 
 const Education = () => {
     const navigate = useNavigate();
@@ -14,24 +15,20 @@ const Education = () => {
     const opcionesEducacion = ['Universidad', 'FP/Terciario', 'Bootcamp', 'Cursos/autodidacta']
 
     const handleChange = (id: number, event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        const updatedEducation = education && education.map(edu => edu.id === id ? { ...edu, [name]: value } : edu);
-        if (updatedEducation) setEducation(updatedEducation);
+        updateInputs(id, event, education || [], setEducation)
     };
 
+    const newGroup = { id: idIncrement, instituto: "", carrera: "", nivel: "", dateStart: '', dateEnd: ''};
     const addEducation = () => {
-        setEducation([...(education || []), { id: idIncrement, instituto: "", carrera: "", nivel: "", dateStart: '', dateEnd: '', },]);
-        setIdIncrement(idIncrement + 1);
+        addGroupInputs(idIncrement, setIdIncrement, education || [], setEducation, newGroup)
     }
+
     const removeEducation = (id: number) => {
-        const updateEducations = education && education.filter(i => i.id !== id)
-        if (updateEducations) setEducation(updateEducations)       
+        removeGroupInputs(id, education || [], setEducation); 
     }
 
     const selectOption = (selected: string, id: number) => {
-        const updatedEducation = education && education.map(edu => edu.id === id ? { ...edu, nivel: selected } : edu);
-        if (updatedEducation) setEducation(updatedEducation);
-        setOpenModalId(null);
+        selectedOption(id, selected, setEducation, education || [], setOpenModalId)
     }
     const handleNext = () => {
         navigate("../tech-skills");
@@ -45,11 +42,7 @@ const Education = () => {
                     <div className="flex flex-col gap-4">
                         <section className="flex gap-2 items-center justify-between">
                             <h3 className="font-thin text-zinc-800 mt-2">Educación</h3>
-                            <div
-                                onClick={() => removeEducation(edu.id)}
-                                className="cursor-pointer h-8 w-8 bg-red-500/75 hover:bg-red-400 grid place-items-center rounded-full">
-                                <FaTrash className="fill-white" />
-                            </div>
+                            <Trash setState={removeEducation} id={edu.id} />
                         </section>
                         <div className="flex flex-col gap-4">
                             <section className=" flex gap-4">
@@ -122,15 +115,7 @@ const Education = () => {
                     </div>
                 </section>
             ))}
-            <div>
-                <button
-                    type="button"
-                    onClick={addEducation}
-                    className="rounded-full mt-4 p-1 grid place-items-center bg-blue-logo hover:bg-blue-2 transition"
-                >
-                    <FaPlus className="fill-white text-2xl font-bold p-1" />
-                </button>
-            </div>
+            <Plus setState={addEducation}/>
             <div className="mt-24">
                 <NextButton onClick={handleNext} label="Guardar cambios y continuar" />
             </div>

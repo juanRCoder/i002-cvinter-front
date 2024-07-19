@@ -32,11 +32,13 @@ interface CvStore extends Template5Props {
 
 export const useCvStore = create<CvStore>((set) => ({
   templateSelected: 0,
-  name: "",
-  lastName: "",
+  name: "Olivia",
+  lastName: "Wilson",
   titulo: "",
   bio: "",
-  personaInfo: [],
+  personaInfo: [
+    {icon:'email', dato: 'OliviaWilson@gmail.com'}
+  ],
   experiencia: [],
   education: [],
   techSkills: [],
@@ -59,20 +61,13 @@ export const useCvStore = create<CvStore>((set) => ({
   setIdiomas: (idiomas: Idiomas[]) => set({ idiomas }),
   setCertificados: (certificados: Certificados[]) => set({ certificados }),
 
-  addInfo: (info: Info) =>
-    set((state) => ({ personaInfo: [...(state.personaInfo ?? []), info] })),
+  addInfo: (info: Info) => set((state) => ({ personaInfo: [...(state.personaInfo ?? []), info] })),
   editInfo: (icon: string, dato: string) =>
     set((state) => ({
-      personaInfo: (state.personaInfo ?? []).map((info) =>
-        info.icon === icon ? { ...info, dato } : info
-      ),
-    })),
+      personaInfo: (state.personaInfo ?? []).map((info) => info.icon === icon ? { ...info, dato } : info)})),
   removeInfo: (icon: string) =>
-    set((state) => ({
-      personaInfo: (state.personaInfo ?? []).filter(
-        (info) => info.icon !== icon
-      ),
-    })),
+    set((state) => ({ personaInfo: (state.personaInfo ?? []).filter((info) => info.icon !== icon)})),
+
   // RESETEO PARA CAMBIAR DE CV's
   resetState: () =>
     set({
