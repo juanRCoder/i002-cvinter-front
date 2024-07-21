@@ -55,11 +55,11 @@ const Template: React.FC<TemplateProps> = ({ name, image }) => {
 const MainPage: React.FC = () => {
 
   const templates = [
-    { name: 'Elegante', image: CVelegante },
-    { name: 'Ejecutivo', image: CVejecutivo },
-    { name: 'Soft', image: CVsoft },
-    { name: 'Clasico', image: CVclasico },
-    { name: 'New', image: CVnew },
+    { name: 'Template 1', image: CVelegante },
+    { name: 'Template 2', image: CVejecutivo },
+    { name: 'Template 3', image: CVsoft },
+    { name: 'Template 4', image: CVnew },
+    { name: 'Template 5', image: CVclasico },
   ];
 
   return (

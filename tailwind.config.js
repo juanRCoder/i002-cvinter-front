@@ -14,10 +14,13 @@ export default {
       boxShadow: {
         'custom': 'inset 0 2px 3px #94B9FF',
         'template': '0 0 10px 0px #7b7b7b',
+        'left1': '-4px 0px 7px 0px #00000055',
+        'topBotton': '0 1px 0px 0px #777777, 0 -1px 6px 0px #777777'
       }
     },
     fontFamily: {
       'lato': ["Lato", 'sans-serif'],
+      'PTSans': ["PT Sans Narrow", 'sans-serif'],
       'sans': ['ui-sans-serif', 'system-ui'],
       'serif': ['ui-serif', 'Georgia'],
       'mono': ['ui-monospace', 'SFMono-Regular'],

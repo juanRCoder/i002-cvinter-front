@@ -7,141 +7,183 @@ import { FaBehanceSquare } from "react-icons/fa";
 import { Template5Props } from "./interfaces-templates";
 
 const Template2: React.FC<Template5Props> = ({ name, lastName, titulo, bio, education, personaInfo, experiencia, techSkills, idiomas, certificados, softSkills }) => {
-    return (
-        <main className="w-full h-full bg-blue-50 p-8 font-sans">
-            <header className="mb-8 text-center bg-blue-200 py-4">
-                <h1 className="text-5xl tracking-wide font-serif text-slate-950">{name} {lastName}</h1>
-                <h3 className="text-xl mt-2 text-slate-800">{titulo}</h3>
-            </header>
+  return (
+    <main className="w-full h-full p-8 shadow-template">
+      <header className=" text-slate-500 grid place-items-center py-2 text-center overflow-hidden break-words">
+        <h1 className="text-5xl tracking-wide overflow-wrap" style={{ maxWidth: "95%" }}>{name} {lastName}</h1>
+        <h3 className="w-full text-xl overflow-wrap py-3 border-b border-slate-300">{titulo}</h3>
+      </header>
 
-            <div className="flex gap-10">
-                <section className="w-1/3 space-y-8">
-                    <div className="space-y-4 text-blue-900">
-                        {personaInfo && personaInfo.map(x => (
-                            <div key={x.dato} className="flex items-center gap-2">
-                                {(() => {
-                                    switch (x.icon) {
-                                        case 'github':
-                                            return <FaGithub className="text-blue-800" />;
-                                        case 'linkedin':
-                                            return <FaLinkedin className="text-blue-800" />;
-                                        case 'portfolio':
-                                            return <HiIdentification className="text-blue-800" />;
-                                        case 'behance':
-                                            return <FaBehanceSquare className="text-blue-800" />;
-                                        case 'email':
-                                            return <MdEmail className="text-blue-800" />;
-                                        case 'telephone':
-                                            return <FaSquarePhone className="text-blue-800" />;
-                                        case 'address':
-                                            return <FaLocationDot className="text-blue-800" />;
-                                        default:
-                                            return null;
-                                    }
-                                })()}
-                                <p>{x.dato}</p>
-                            </div>
-                        ))}
+      <div className="grid grid-cols-2 gap-8">
+        <section>
+          {/* SOBRE MI */}
+          <article className="min-w-full break-words whitespace-normal text-gray-700 mt-2">
+            {bio && bio.length > 0 && (
+              <header className="w-[275px]">
+                <p className="py-2 text-left text-base tracking-wide font-semibold text-slate-500 border-b border-slate-300 ">SOBRE MI</p>
+              </header>
+            )}
+            <p className="w-[275px] text-gray-700 overflow-wrap text-sm">{bio}</p>
+          </article>
+          {/* EXPERIENCIA */}
+          {experiencia && experiencia.length > 0 && (
+            <article className="w-[275px] overflow-hidden break-words whitespace-normal text-gray-700 mt-2">
+              <header className=" w-[275px]">
+                <p className="py-2 text-left text-base tracking-wide font-semibold text-slate-500 border-b border-slate-300">EXPERIENCIA</p>
+              </header>
+              {experiencia.map((x, i) => (
+                <div key={i} className="mb-2">
+                  <p className=" italic grid grid-cols-2 text-gray-600">
+                    <span className="">Inicio: {x.dateStart}</span>
+                    <span className="">{x.dateEnd ? `Fin: ${x.dateEnd}` : ''}</span>
+                  </p>
+                  <p className="font-bold text-slate-500">{x.empresa}</p>
+                  <p className="italic text-slate-500">{x.profesion}</p>
+                  <p className="text-gray-700 overflow-wrap text-sm">{x.descripcion}</p>
+                </div>
+              ))}
+            </article>
+          )}
+          {/* IDIOMAS */}
+          {idiomas && idiomas.length > 0 && (
+            <article className="min-w-full break-words whitespace-normal text-gray-700 mt-2">
+              <header className="">
+                <p className="py-2 text-left text-base tracking-wide font-semibold text-slate-500 border-b border-slate-300">IDIOMAS</p>
+              </header>
+              <div className="">
+                <div>
+                  {idiomas && idiomas.map((x, i) => (
+                    x.languaje && (<p key={i} className="text-sm mb-[1px] text-gray-700">{x.languaje} {x.nivel ? `- ${x.nivel}` : ''}</p>)))}
+                </div>
+              </div>
+            </article>
+          )}
+        </section>
+        <section>
+          {/* TECH SKILLS */}
+          {techSkills && techSkills.length > 0 && (
+            <article className="text-sm min-w-full break-words whitespace-normal text-gray-700 mt-2">
+              <header className="">
+                <p className="py-2 text-left text-base tracking-wide font-semibold text-slate-500 border-b border-slate-300">HABILIDADES TÉCNICAS</p>
+              </header>
+              {techSkills.map((x, i) => (
+                <div key={i} className="">
+                  <p className="text-gray-700">{x.skill} <b>{x.nivel ? `- ${x.nivel}` : ''}</b></p>
+                </div>
+              ))}
+            </article>
+          )}
+          {/* SOFT SKILLS */}
+          {softSkills && softSkills.length > 0 && (
+            <article className="text-sm min-w-full break-words whitespace-normal text-gray-700 mt-4">
+              <header className="">
+                <p className="py-2 text-left text-base tracking-wide font-semibold text-slate-500 border-b border-slate-300">HABILIDADES BLANDAS</p>
+              </header>
+              <div className="list-outside">
+                {softSkills.map((x, i) => (
+                  <p key={i} className="text-gray-700">{x}</p>
+                ))}
+              </div>
+            </article>
+          )}
+          {/* EDUCATION */}
+          {education && education.length > 0 && (
+            <article className="min-w-full break-words whitespace-normal text-gray-700 mt-4">
+              <header className="">
+                <p className="py-2 text-left text-base tracking-wide font-semibold text-slate-500 border-b border-slate-300">EDUCACIÓN</p>
+              </header>
+              {education.map(x => (
+                <div key={x.dateStart} className="mb-4">
+                  <p className="font-bold text-slate-500">{x.carrera}</p>
+                  <p className="text-sm text-gray-700">{x.instituto} {x.dateStart ? `| ${x.dateStart}` : ''} {x.dateEnd ? `- ${x.dateEnd}` : ''}</p>
+                  <p className="text-sm italic text-gray-700">{x.nivel}</p>
+                </div>
+              ))}
+            </article>
+          )}
+          {/* CERTIFICADOS */}
+          {certificados && certificados.length > 0 && (
+            <article className="min-w-full break-words whitespace-normal text-gray-700 mt-4">
+              <header className="">
+                <p className="py-2 text-left text-base tracking-wide font-semibold text-slate-500 border-b border-slate-300">CERTIFICADOS</p>
+              </header>
+              <div className="">
+                <div>
+                  {certificados && certificados.map((x, i) => (
+                    <li key={i} className="text-sm inline mb-2 text-gray-700">
+                      <p className="font-bold">{x.skill}</p>
+                      <p>{x.entidadEmisora} {x.ano ? `- ${x.ano}` : ''}</p>
+                    </li>
+                  ))}
+                </div>
+              </div>
+            </article>
+          )}
+        </section>
+      </div>
+      {/* REDES */}
+      <article className="py-3 overflow-hidden h-auto break-words whitespace-normal text-gray-700">
+        {personaInfo && personaInfo.length > 0 && (
+          <header className="w-full">
+            <p className="py-2 text-left text-base tracking-wide font-semibold text-slate-500 border-b border-slate-300 ">REDES SOCIALES</p>
+          </header>
+        )}
+        {personaInfo?.map((x, index) => (
+          <div key={`${x.icon}-${index}`} className="flex items-center gap-2 flex-wrap mt-2">
+            {(() => {
+              switch (x.icon) {
+                case 'github':
+                  return (
+                    <div className="h-5 w-5 grid place-items-center">
+                      <FaGithub className="h-full w-full text-gray-700" />
                     </div>
-
-                    <article>
-                        {bio && bio.length > 0 && (
-                            <header className="mb-2">
-                                <p className="bg-orange-200 text-center text-2xl tracking-wide font-semibold text-gray-800">SOBRE MI</p>
-                            </header>
-                        )}
-                        <p className="text-blue-900">{bio}</p>
-                    </article>
-
-                    {education && education.length > 0 && (
-                        <article>
-                            <header className="mb-2">
-                                <p className="text-2xl tracking-wide font-semibold text-slate-950 underline decoration-blue-950">EDUCACIÓN</p>
-                            </header>
-                            {education.map(x => (
-                                <div key={x.dateStart} className="mb-4">
-                                    <p className="font-bold text-blue-900">{x.carrera}</p>
-                                    <p className="text-blue-700">{x.instituto} - {x.dateStart} {x.dateEnd}</p>
-                                    <p className="italic text-blue-700">{x.nivel}</p>
-                                </div>
-                            ))}
-                        </article>
-                    )}
-                </section>
-
-                <section className="w-2/3 space-y-8 text-blue-900">
-                    {experiencia && experiencia.length > 0 && (
-                        <article>
-                            <header className="mb-2">
-                                <p className="text-2xl tracking-wide font-semibold text-slate-950 underline decoration-blue-950">EXPERIENCIA</p>
-                            </header>
-                            {experiencia.map((x, i) => (
-                                <div key={i} className="mb-4">
-                                    <p className="italic flex gap-2 text-gray-600">
-                                        <span>{x.dateStart}</span>
-                                        <span>{x.dateEnd}</span>
-                                    </p>
-                                    <p className="font-bold text-blue-900">{x.empresa}</p>
-                                    <p className="italic text-blue-900">{x.profesion}</p>
-                                    <p className="text-blue-700">{x.descripcion}</p>
-                                </div>
-                            ))}
-                        </article>
-                    )}
-
-                    {techSkills && techSkills.length > 0 && (
-                        <article>
-                            <header className="mb-2">
-                                <p className="text-2xl tracking-wide font-semibold text-slate-950 underline decoration-blue-950">HABILIDADES TÉCNICAS</p>
-                            </header>
-                            {techSkills.map((x, i) => (
-                                <div key={i} className="mb-4">
-                                    <p className="font-semibold text-blue-900">{x.skill}</p>
-                                    <div className={`h-2 rounded-full bg-blue-300 w-${x.nivel === 'principiante' ? '1/4' : x.nivel === 'basico' ? '1/2' : x.nivel === 'intermedio' ? '3/4' : 'full'}`}></div>
-                                </div>
-                            ))}
-                        </article>
-                    )}
-
-                    {softSkills && softSkills.length > 0 && (
-                        <article>
-                            <header className="mb-2">
-                                <p className="text-2xl tracking-wide font-semibold text-slate-950 underline decoration-blue-950">HABILIDADES BLANDAS</p>
-                            </header>
-                            <ul className="list-disc list-inside">
-                                {softSkills.map((x, i) => (
-                                    <li key={i} className="text-blue-900">{x}</li>
-                                ))}
-                            </ul>
-                        </article>
-                    )}
-
-                    {(idiomas && idiomas.length > 0) || (certificados && certificados.length > 0) && (
-                        <article>
-                            <header className="mb-2">
-                                <p className="text-2xl tracking-wide font-semibold text-slate-950 underline decoration-blue-950">IDIOMAS {certificados && certificados.length > 0 ? 'y CERTIFICADOS' : ''}</p>
-                            </header>
-                            <div className="flex gap-10">
-                                <div>
-                                    {idiomas && idiomas.map((x, i) => (
-                                        <li key={i} className="mb-2 text-blue-900">{x.languaje} - {x.nivel}</li>
-                                    ))}
-                                </div>
-                                <div>
-                                    {certificados && certificados.map((x, i) => (
-                                        <li key={i} className="mb-2 text-blue-900">
-                                            <p className="font-bold">{x.skill}</p>
-                                            <p>{x.entidadEmisora} - {x.ano}</p>
-                                        </li>
-                                    ))}
-                                </div>
-                            </div>
-                        </article>
-                    )}
-                </section>
-            </div>
-        </main>
-    );
+                  );
+                case 'linkedin':
+                  return (
+                    <div className="h-5 w-5 grid place-items-center">
+                      <FaLinkedin className="h-full w-full text-gray-700" />
+                    </div>
+                  );
+                case 'portfolio':
+                  return (
+                    <div className="h-5 w-5 grid place-items-center">
+                      <HiIdentification className="h-full w-full text-gray-700" />
+                    </div>
+                  );
+                case 'behance':
+                  return (
+                    <div className="h-5 w-5 grid place-items-center">
+                      <FaBehanceSquare className="h-full w-full text-gray-700" />
+                    </div>
+                  );
+                case 'email':
+                  return (
+                    <div className="h-5 w-5 grid place-items-center">
+                      <MdEmail className="h-full w-full text-gray-700" />
+                    </div>
+                  );
+                case 'telephone':
+                  return (
+                    <div className="h-5 w-5 grid place-items-center">
+                      <FaSquarePhone className="h-full w-full text-gray-700" />
+                    </div>
+                  );
+                case 'address':
+                  return (
+                    <div className="h-5 w-5 grid place-items-center">
+                      <FaLocationDot className="h-full w-full text-gray-700" />
+                    </div>
+                  );
+                default:
+                  return null;
+              }
+            })()}
+            <p className="text-sm overflow-wrap" style={{ maxWidth: "85%" }}>{x.dato}</p>
+          </div>
+        ))}
+      </article>
+    </main>
+  );
 }
 
 export default Template2;

@@ -48,9 +48,9 @@ const CVPreview: React.FC = () => {
 
   return (
     <>
-      <span ref={localCvRef} className="p-0 w-0">
+      <div ref={localCvRef}>
         {renderSelectedTemplate()}
-      </span>
+      </div>
     </>
   );
 };
