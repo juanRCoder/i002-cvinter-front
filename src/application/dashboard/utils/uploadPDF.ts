@@ -9,7 +9,7 @@ export const handleDownloadPdf = async (
   try {
     const cvElement = cvRef.current;
     // Captura la imagen del elemento
-    const canvas = await html2canvas(cvElement, { scale: 3 }); // Ajusta el scale si es necesario
+    const canvas = await html2canvas(cvElement, { scale: 2 }); // Ajusta el scale si es necesario
     const data = canvas.toDataURL("image/png");
 
     // Crea un nuevo documento PDF

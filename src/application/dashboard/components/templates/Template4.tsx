@@ -7,8 +7,8 @@ import { Template5Props } from "./interfaces-templates";
 
 const Template4: React.FC<Template5Props> = ({ name, lastName, titulo, bio, education, personaInfo, experiencia, techSkills, idiomas, certificados, softSkills }) => {
   return (
-    <main className="font-lato shadow-template">
-      <section className="py-10">
+    <main className="font-lato shadow-template pt-5">
+      <section className="pb-10">
         <header className="shadow-topBotton pb-4 relative bg-green-700 text-slate-50">
           <h1 className="text-4xl text-text-center tracking-widest text-center">{name} {lastName}</h1>
           <h3 className="text-center text-lg flex items-center gap-4 justify-center">{titulo}</h3>
@@ -130,7 +130,7 @@ const Template4: React.FC<Template5Props> = ({ name, lastName, titulo, bio, educ
                 {techSkills.map((x, i) => (
                   <div key={i} className="grid grid-cols-2 text-sm mb-1">
                     <p className="text-gray-700">{x.skill}</p>
-                    <div className={`pb-3 text-center rounded-lg bg-gray-300 
+                    <div className={`pb-2 text-center rounded-lg bg-gray-300 
                     w-${x.nivel == 'principiante' ? '6'
                         : (x.nivel == 'basico' ? '10'
                           : (x.nivel == 'intermedio' ? '24'

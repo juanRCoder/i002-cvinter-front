@@ -6,7 +6,7 @@ import { Template5Props } from "./interfaces-templates";
 
 const Template5: React.FC<Template5Props> = ({ name, lastName, bio, titulo, education, experiencia, personaInfo, techSkills, idiomas, certificados, softSkills }) => {
   return (
-    <main className="font-sans shadow-template py-10">
+    <main className="font-sans shadow-template pb-12">
 
       <header className="pb-4 relative text-slate-700 px-8 mb-5">
         <h1 className="text-4xl text-text-left">{name} {lastName}</h1>

@@ -83,9 +83,8 @@ const Template1: React.FC<Template5Props> = ({ name, lastName, titulo, bio, educ
           {/* EDUCACION */}
           {education && education.length > 0 && (
             <article className="mt-2">
-              <header className="flex justify-start items-center gap-3 mt-2">
-                <span className="h-3 w-3 rounded-full bg-gray-700 block"></span>
-                <p className="text-3xl italic font-thin tracking-tighter">EDUCACIÓN</p>
+              <header className="mb-2">
+                <p className="bg-orange-200 pb-3 text-center text-base tracking-wide font-semibold text-gray-800 rounded-md">EDUCACIÓN</p>
               </header>
               {education.map((x, index) => (
                 <div key={index} className="pb-3 text-sm">
@@ -128,17 +127,19 @@ const Template1: React.FC<Template5Props> = ({ name, lastName, titulo, bio, educ
               {techSkills.map((x, i) => (
                 <div key={i} className="mb-1 grid grid-cols-2">
                   <p className="font-semibold text-gray-700">{x.skill}</p>
-                  <div className={`text-[12px] pb-3 text-center rounded-lg bg-gray-300 
-                    w-${x.nivel == 'principiante' ? '6'
-                      : (x.nivel == 'basico' ? '10'
-                        : (x.nivel == 'intermedio' ? '24'
-                          : (x.nivel == 'avanzado' ? '36' : '')))}`
-                  }>
-                    {x.nivel == 'principiante' ? '5%'
-                      : (x.nivel == 'basico' ? '10%'
-                        : (x.nivel == 'intermedio' ? '50%'
-                          : (x.nivel == 'avanzado' ? '90%' : '')))}
-                  </div>
+                  {x.nivel && (
+                    <div className={`text-[12px] pb-3 text-center rounded-lg bg-gray-300 
+                                        w-${x.nivel == 'principiante' ? '6'
+                        : (x.nivel == 'basico' ? '10'
+                          : (x.nivel == 'intermedio' ? '24'
+                            : (x.nivel == 'avanzado' ? '36' : '')))}`
+                    }>
+                      {x.nivel == 'principiante' ? '5%'
+                        : (x.nivel == 'basico' ? '10%'
+                          : (x.nivel == 'intermedio' ? '50%'
+                            : (x.nivel == 'avanzado' ? '90%' : '')))}
+                    </div>
+                  )}
                 </div>
               ))}
             </article>

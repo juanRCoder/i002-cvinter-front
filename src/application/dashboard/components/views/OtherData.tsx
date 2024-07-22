@@ -32,6 +32,7 @@ const OtherData = () => {
     const handleSelectOption = (lvl: string, ln: string) => {
         const updatedIdiomas = idiomas?.map(prev => ({ ...prev, nivel: ln === prev.languaje ? lvl : prev.nivel }));
         if (updatedIdiomas) setIdiomas(updatedIdiomas);
+        setLnModal(null);
     }
 
     const handleChangeCertificados = (id: number, event: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +52,7 @@ const OtherData = () => {
     };
 
     return (
-        <div className="flex justify-center flex-col">
+        <div className="flex justify-center flex-col sticky top-10">
             <h5 className="text-base text-zinc-800 mt-2 border-b boder-b-blue-logo pb-2">Idiomas:</h5>
             {idiomas?.map((idioma, index) => (
                 <section key={index} className="first:mt-10 mt-5">
