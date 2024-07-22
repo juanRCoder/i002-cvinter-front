@@ -7,200 +7,192 @@ import { Template5Props } from "./interfaces-templates";
 
 const Template4: React.FC<Template5Props> = ({ name, lastName, titulo, bio, education, personaInfo, experiencia, techSkills, idiomas, certificados, softSkills }) => {
   return (
-    <main className="w-full h-full bg-stone-50 outline outline-1 outline-stone-200">
-      <section className="py-10">
-        <header className="relative">
-          <h1 className="text-4xl text-center tracking-widest">{name} {lastName}</h1>
-          <h3 className="text-center text-lg mt-2 flex items-center gap-4 justify-center">
-            <span className="block h-2 w-2 bg-black rounded-full" />
-            {titulo}
-            <span className="block h-2 w-2 bg-black rounded-full" />
-          </h3>
+    <main className="font-lato shadow-template pt-5">
+      <section className="pb-10">
+        <header className="shadow-topBotton pb-4 relative bg-green-700 text-slate-50">
+          <h1 className="text-4xl text-text-center tracking-widest text-center">{name} {lastName}</h1>
+          <h3 className="text-center text-lg flex items-center gap-4 justify-center">{titulo}</h3>
         </header>
-        <div className="" style={{ transform: 'scale(.7)' }}>
-          <section className="justify-center items-center text-md flex gap-3 my-4">
-            {personaInfo && personaInfo.map(x => (
-              <div key={x.dato} className="flex items-center gap-2">
-                {(() => {
-                  switch (x.icon) {
-                    case 'github':
-                      return <FaGithub />;
-                    case 'linkedin':
-                      return <FaLinkedin />;
-                    case 'portfolio':
-                      return <HiIdentification />;
-                    case 'behance':
-                      return <FaBehanceSquare />;
-                    default:
-                      return null;
-                  }
-                })()}
-                {(() => {
-                  switch (x.icon) {
-                    case 'github':
-                      return <p>{x.dato}</p>;
-                    case 'linkedin':
-                      return <p>{x.dato}</p>;
-                    case 'portfolio':
-                      return <p>{x.dato}</p>;
-                    case 'behance':
-                      return <p>{x.dato}</p>;
-                    default:
-                      return null;
-                  }
-                })()}
-              </div>
-            ))}
-          </section>
-          <section className="justify-center text-md flex gap-3 ">
-            {personaInfo && personaInfo.map(x => (
-              <div key={x.icon} className="flex items-center gap-2">
-                {(() => {
-                  switch (x.icon) {
-                    case 'email':
-                      return <MdEmail />;
-                    case 'telephone':
-                      return <FaSquarePhone />;
-                    case 'address':
-                      return <FaLocationDot />;
-                    default:
-                      return null;
-                  }
-                })()}
-                {(() => {
-                  switch (x.icon) {
-                    case 'telephone':
-                      return <p>{x.dato}</p>;
-                    case 'address':
-                      return <p>{x.dato}</p>;
-                    case 'email':
-                      return <p>{x.dato}</p>;
-                    default:
-                      return null;
-                  }
-                })()}
-              </div>
-            ))}
-          </section>
-        </div>
-        <section className="flex gap-5" style={{ transform: 'scale(.8)', marginBottom: '-35px' }}>
-          <article className="w-1/2">
-            <header className="mb-5 flex justify-start gap-3">
-              <p className="text-xl tracking-wider" style={{ letterSpacing: '5px' }}>SOBRE MI</p>
-            </header>
-            <p className="max-w-80">{bio}</p>
-          </article>
-          <article className="w-1/2">
-            {education && education.length > 0 && (
-              <header className="mb-5 flex justify-start gap-3">
-                <p className="text-xl tracking-wider" style={{ letterSpacing: '5px' }}>ESTUDIOS</p>
+        {/* REDES SOCIALES */}
+        <article className=" px-10 grid grid-cols-2 py-3 overflow-hidden h-auto break-words whitespace-normal text-gray-700">
+          {personaInfo?.map((x, index) => (
+            <div key={`${x.icon}-${index}`} className="flex items-center gap-2 flex-wrap mt-2">
+              {(() => {
+                switch (x.icon) {
+                  case 'github':
+                    return (
+                      <div className="h-5 w-5 grid place-items-center">
+                        <FaGithub className="h-full w-full text-green-700" />
+                      </div>
+                    );
+                  case 'linkedin':
+                    return (
+                      <div className="h-5 w-5 grid place-items-center">
+                        <FaLinkedin className="h-full w-full text-green-700" />
+                      </div>
+                    );
+                  case 'portfolio':
+                    return (
+                      <div className="h-5 w-5 grid place-items-center">
+                        <HiIdentification className="h-full w-full text-green-700" />
+                      </div>
+                    );
+                  case 'behance':
+                    return (
+                      <div className="h-5 w-5 grid place-items-center">
+                        <FaBehanceSquare className="h-full w-full text-green-700" />
+                      </div>
+                    );
+                  case 'email':
+                    return (
+                      <div className="h-5 w-5 grid place-items-center">
+                        <MdEmail className="h-full w-full text-green-700" />
+                      </div>
+                    );
+                  case 'telephone':
+                    return (
+                      <div className="h-5 w-5 grid place-items-center">
+                        <FaSquarePhone className="h-full w-full text-green-700" />
+                      </div>
+                    );
+                  case 'address':
+                    return (
+                      <div className="h-5 w-5 grid place-items-center">
+                        <FaLocationDot className="h-full w-full text-green-700" />
+                      </div>
+                    );
+                  default:
+                    return null;
+                }
+              })()}
+              <p className="text-sm overflow-wrap" style={{ maxWidth: "85%" }}>{x.dato}</p>
+            </div>
+          ))}
+        </article>
+
+        <section className="grid grid-cols-2 gap-4 px-10">
+          {/* SOBRE MI */}
+          <article className="min-w-full h-auto break-words whitespace-normal text-gray-700 mt-4">
+            {bio && bio.length > 0 && (
+              <header className="">
+                <p className="pb-3 text-left text-base tracking-wide font-semibold text-gray-800 rounded-md" style={{ letterSpacing: '5px' }}>SOBRE MI</p>
               </header>
             )}
-            <section>
-              {education && education.map(x => (
-                <aside>
-                  <div className="flex flex-col">
-                    <p className="">{x.dateStart} {x.dateEnd}</p>
-                    <p className="font-bold">{x.carrera}</p>
+            <p className="w-[262px]  pb-3 text-gray-700 overflow-wrap text-sm">{bio}</p>
+          </article>
+          {/* EDUCACION */}
+          <article className="min-w-full h-auto break-words whitespace-normal text-gray-700 mt-4">
+            {education && education.length > 0 && (
+              <>
+                <header className="">
+                  <p className="pb-3 text-left text-base tracking-wide font-semibold text-gray-800 rounded-md" style={{ letterSpacing: '5px' }}>EDUCACIÓN</p>
+                </header>
+                {education.map((x, index) => (
+                  <div key={index} className="pb-3 text-sm">
+                    <p className="font-bold text-gray-700 text-base">{x.carrera}</p>
+                    <p className="text-gray-600">{x.instituto} {x.nivel ? `/ ${x.nivel}` : x.nivel}</p>
+                    <p className="italic text-gray-600"><b className="italic">{x.dateStart} {x.dateEnd ? `- ${x.dateEnd}` : x.dateEnd}</b></p>
                   </div>
-                  <div className="flex flex-col italic">
-                    <p className="font-semibold">{x.instituto}</p>
-                    <p>{x.nivel}</p>
-                  </div>
-                </aside>
-              ))}
-            </section>
+                ))}
+              </>
+            )}
           </article>
         </section>
-
-        <div className="flex gap-5" style={{ transform: 'scale(.8)', marginBottom: '-55px' }}>
-          <div className="flex flex-col gap-5 w-1/2">
-            <section className="">
-              {experiencia && experiencia.length > 0 && (
-                <header className="mb-5 flex justify-start items-center gap-3">
-                  <p className="text-xl tracking-wider" style={{ letterSpacing: '5px' }}>EXPERIENCIA</p>
-                </header>
-              )}
-              <article className="flex flex-col gap-5">
-                {experiencia && experiencia.map((x, i) => (
-                  <section key={i} className="flex flex-col">
-                    <div className="italic flex gap-3">
-                      <p className="font-thin">{x.dateStart}</p>
-                      <p className="font-semibold">{x.dateEnd}</p>
-                    </div>
-                    <div className="">
-                      <h2 className="font-bold">{x.empresa}</h2>
-                      <p className="font-semibold italic">{x.profesion}</p>
-                      <div className="text-sm">
-                        <p>{x.descripcion}</p>
-                      </div>
-                    </div>
-                  </section>
-                ))}
-              </article>
-            </section>
-          </div>
-          <div className="w-1/2">
-            <div className="">
-              <section className="pb-8 rounded-sm">
-                {techSkills && techSkills.length > 0 && (
-                  <header className="mb-5 flex justify-start items-center gap-3">
-                    <p className="text-xl tracking-wider" style={{ letterSpacing: '5px' }}>HABILIDADES TECNICAS</p>
-                  </header>
-                )}
-                {/* w-52: avanzando | w-44: intermedio |  w-28: basico | w-14 principiante*/}
-                <aside className="flex flex-col">
-                  {techSkills && techSkills.map(x => (
-                    <section className="flex gap-4 items-center">
-                      <p className="w-16">{x.skill}</p>
-                      <div className="w-16 flex gap-2 flex-col">
-                        <span className={`block h-4 rounded-full bg-slate-500/40 
-                          ${x.nivel == 'principiante' ? 'w-10'
-                            : (x.nivel == 'basico' ? 'w-24'
-                              : (x.nivel == 'intermedio' ? 'w-32'
-                                : (x.nivel == 'avanzado' ? 'w-36' : '')))}`}
-                        /></div>
-                    </section>
-                  ))}
-                </aside>
-              </section>
-              <section className="pb-8 rounded-sm">
-                {techSkills && techSkills.length > 0 && (
-                  <header className="mb-5 flex justify-start items-center gap-3">
-                    <p className="text-xl tracking-wider" style={{ letterSpacing: '5px' }}>HABILIDADES BLANDAS</p>
-                  </header>
-                )}
-                {/* w-52: avanzando | w-44: intermedio |  w-28: basico | w-14 principiante*/}
-                <aside className="flex flex-col">
-                  {softSkills && softSkills.map(x => (
-                    <li className="">{x}</li>
-                  ))}
-                </aside>
-              </section>
-            </div>
-          </div>
-        </div>
-        <section className="" style={{ transform: 'scale(.8)' }}>
-          {idiomas && idiomas.length > 0 && (
-            <header className="flex justify-start items-center">
-              <p className="text-xl tracking-wider" style={{ letterSpacing: '5px' }}>IDIOMAS {certificados && certificados?.length > 0 ? 'y CERTIFICADOS' : ''}</p>
+        {/* EXPERIENCIA */}
+        <article className="px-10 w-full overflow-hidden break-words whitespace-normal text-gray-700">
+          {experiencia && experiencia.length > 0 && (
+            <header className="">
+              <p className="pb-3 text-left text-base tracking-wide font-semibold text-gray-800 rounded-md" style={{ letterSpacing: '5px' }}>EXPERIENCIA</p>
             </header>
           )}
-          <aside className="flex mt-5 gap-10">
-            <div className="">
-              {idiomas && idiomas.map(x => (
-                <li className="text-,d">{x.languaje}  {x.nivel}</li>
-              ))}
+          {experiencia && experiencia.map((x, i) => (
+            <div key={i} className="text-sm pb-3">
+              <p className="font-bold text-gray-800 text-base">{x.empresa}</p>
+              <div className="relative grid grid-cols-2">
+                <p className="italic text-gray-700">{x.profesion}</p>
+                <p className="absolute right-0 italic flex gap-2 text-gray-600 font-bold">
+                  <span>{x.dateStart}</span>
+                  <span>{x.dateEnd ? `- ${x.dateEnd}` : x.dateEnd}</span>
+                </p>
+              </div>
+              {x.descripcion && <p className="text-gray-600">{x.descripcion}</p>}
             </div>
-            <div className="">
-              {certificados && certificados.map(x => (
-                <li className="mb-4">
-                  <p className="inline font-bold">{x.skill}</p>
-                  <p className="">{x.entidadEmisora}  {x.ano}</p>
-                </li>
-              ))}
-            </div>
-          </aside>
+          ))}
+        </article>
+        <section className="grid grid-cols-2 gap-3 px-10">
+          <div>
+            {/* TECH SKILLS */}
+            {techSkills && techSkills.length > 0 && (
+              <article className="overflow-hidden break-words whitespace-normal text-gray-700 mt-2">
+                <header className="">
+                  <p className="pb-3 text-left text-base tracking-wide font-semibold text-gray-800 rounded-md" style={{ letterSpacing: '5px' }}>HABILIDADES TÉCNICAS</p>
+                </header>
+                {techSkills.map((x, i) => (
+                  <div key={i} className="grid grid-cols-2 text-sm mb-1">
+                    <p className="text-gray-700">{x.skill}</p>
+                    <div className={`pb-2 text-center rounded-lg bg-gray-300 
+                    w-${x.nivel == 'principiante' ? '6'
+                        : (x.nivel == 'basico' ? '10'
+                          : (x.nivel == 'intermedio' ? '24'
+                            : (x.nivel == 'avanzado' ? '32' : '')))}`
+                    }>
+                      {x.nivel == 'principiante' ? '5%'
+                        : (x.nivel == 'basico' ? '10%'
+                          : (x.nivel == 'intermedio' ? '50%'
+                            : (x.nivel == 'avanzado' ? '90%' : '')))}
+                    </div>
+                  </div>
+                ))}
+              </article>
+            )}
+            {/* IDIOMAS */}
+            {idiomas && idiomas.length > 0 && (
+              <article className="overflow-hidden break-words whitespace-normal text-gray-700 mt-2">
+                <header className="mb-2">
+                  <p className="pb-3 text-left text-base tracking-wide font-semibold text-gray-800 rounded-md" style={{ letterSpacing: '5px' }}>IDIOMAS</p>
+                </header>
+                <div className="pb-3">
+                  <div>
+                    {idiomas && idiomas.map((x, i) => (
+                      x.languaje && (<p key={i} className="text-sm mb-[1px] text-gray-700">{x.languaje} <b>{x.nivel ? `- ${x.nivel}` : ''}</b></p>)))}
+                  </div>
+                </div>
+              </article>
+            )}
+          </div>
+          <div>
+            {/* SOFT SKILLS */}
+            {softSkills && softSkills.length > 0 && (
+              <article className="overflow-hidden break-words whitespace-normal text-gray-700 mt-2">
+                <header className="">
+                  <p className="pb-3 text-left text-base tracking-wide font-semibold text-gray-800 rounded-md" style={{ letterSpacing: '5px' }}>HABILIDADES BLANDAS</p>
+                </header>
+                <ul className="list-disc list-inside text-sm pb-3">
+                  {softSkills.map((x, i) => (
+                    x && (<p key={i} className="text-gray-700">{x}</p>)
+                  ))}
+                </ul>
+              </article>
+            )}
+            {/* CERTIFICADOS */}
+            {certificados && certificados.length > 0 && (
+              <article className="overflow-hidden break-words whitespace-normal text-gray-700 mt-2">
+                <header className="mb-2">
+                  <p className="pb-3 text-left text-base tracking-wide font-semibold text-gray-800 rounded-md" style={{ letterSpacing: '5px' }}>CERTIFICADOS</p>
+                </header>
+                <div className="pb-3">
+                  <div>
+                    {certificados && certificados.map((x, i) => (
+                      <li key={i} className="text-sm inline mb-2 text-gray-700">
+                        <p className="font-bold">{x.skill}</p>
+                        <p>{x.entidadEmisora} {x.ano ? `- ${x.ano}` : ''}</p>
+                      </li>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            )}
+          </div>
         </section>
       </section>
     </main>

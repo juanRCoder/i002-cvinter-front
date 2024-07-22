@@ -23,10 +23,10 @@ const SelectTemplate = () => {
     };
 
     const templatesArray = [
-        { id: 1, src: elegante, alt: "Plantilla 1", name: "Elegante" },
-        { id: 2, src: ejecutivo, alt: "Plantilla 2", name: "Ejecutivo" },
-        { id: 3, src: soft, alt: "Plantilla 3", name: "Soft" },
-        { id: 4, src: newCv, alt: "Plantilla 4", name: "New CV" },
+        { id: 1, src: elegante, alt: "Plantilla 1", name: "Plantilla 1" },
+        { id: 2, src: ejecutivo, alt: "Plantilla 2", name: "Plantilla 2" },
+        { id: 3, src: soft, alt: "Plantilla 3", name: "Plantilla 3" },
+        { id: 4, src: newCv, alt: "Plantilla 4", name: "Plantilla 4" },
         { id: 5, src: clasico, alt: "Plantilla 5", name: "Clasico" }
     ];
 
