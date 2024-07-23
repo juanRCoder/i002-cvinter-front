@@ -21,6 +21,8 @@ const Navbar: React.FC = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isCVTemplatesRoute: boolean = (
+    location.pathname === '/PrivacyPolicy' ||
+    location.pathname === '/PrivacyCookies' ||
     location.pathname === '/CVTemplates' ||
     location.pathname === '/CVTemplates/bio' ||
     location.pathname === '/CVTemplates/experience' ||
@@ -50,23 +52,23 @@ const Navbar: React.FC = () => {
             <ButtonNav onClick={() => setMobileMenuOpen(true)} />
           </div>
           <div className="lg:items-center hidden lg:flex lg:gap-16">
-          {navigation.map((item) => (
-            !isCVTemplatesRoute 
-              ? (              
-                  item.href === '/' || item.href === '/CVTemplates' 
-                  ? (
-                    <Link key={item.name} to={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black text-center transition-all">
-                      {item.name}
-                    </Link>
-                    ) 
-                  : (
-                    <a key={item.name} href={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black transition-all">
-                      {item.name}
-                    </a>
-                  )
+            {navigation.map((item) => (
+              !isCVTemplatesRoute
+                ? (
+                  item.href === '/' || item.href === '/CVTemplates'
+                    ? (
+                      <Link key={item.name} to={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black text-center transition-all">
+                        {item.name}
+                      </Link>
+                    )
+                    : (
+                      <a key={item.name} href={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black transition-all">
+                        {item.name}
+                      </a>
+                    )
                 )
-              : (
-                  item.href === '/' || item.href === '/CVTemplates' ? (
+                : (
+                  item.href === '/' || item.href === '/CVTemplates'  ? (
                     <Link key={item.name} to={item.href} className="hover:border-b-2 hover:border-b-blue-logo text-md text-zinc-800 hover:text-black hover:font-semibold text-center transition-all">
                       {item.name}
                     </Link>
@@ -74,7 +76,7 @@ const Navbar: React.FC = () => {
                 )
             ))}
             <a href="/Login" className="h-10 w-10 flex items-center justify-center text-2xl rounded-full outline outline-4 outline-blue-logo">
-              <AiOutlineUser/>
+              <AiOutlineUser />
             </a>
           </div>
         </nav>

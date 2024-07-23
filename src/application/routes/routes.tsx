@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
-import NotFound from "../pages/NotFound";
 import About from "../pages/About";
 import Register from "../auth/components/Register";
 import Login from "../auth/components/Login";
@@ -15,8 +14,9 @@ import TechSkills from "../dashboard/components/views/TechSkills";
 import OtherData from "../dashboard/components/views/OtherData";
 import Upload from "../dashboard/components/views/Upload";
 import App from "../../App";
-import HowItWorks from "../pages/HowItWorks";
 import Contact from "../pages/Contact";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import PrivacyCookies from "../pages/PrivacyCookies";
 
 const router = createBrowserRouter([
   {
@@ -82,21 +82,17 @@ const router = createBrowserRouter([
         element: <About />
       },
       {
-        path: "/NotFound",
-        element: <NotFound />,
-      },
-      {
-        path: "/HowItWorks",
-        element: <HowItWorks />,
-      },
-      {
         path: "/Contact",
         element: <Contact />,
       },
       {
-        path: "/Home",
-        element: <Home />,
+        path: "/PrivacyPolicy",
+        element: <PrivacyPolicy />,
       },
+      {
+        path: "/PrivacyCookies",
+        element: <PrivacyCookies />,
+      }
     ]
   }
 

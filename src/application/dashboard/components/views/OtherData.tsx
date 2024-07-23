@@ -102,7 +102,7 @@ const OtherData = () => {
                 <section key={certificado.id} className="first:mt-10 mt-5">
                     <section className="flex gap-2 items-center justify-between">
                         <h3 className="font-thin text-zinc-800">Certicado</h3>
-                        <Trash setState={removeCertificado} id={certificado.id}/>
+                        <Trash setState={removeCertificado} id={certificado.id || 0}/>
                     </section>
                     <div className="flex gap-4 mt-2">
                         <input
@@ -110,7 +110,7 @@ const OtherData = () => {
                             id={`skill-${certificado.id}`}
                             name="skill"
                             placeholder="Nombre de la certificación"
-                            onChange={(e) => handleChangeCertificados(certificado.id, e)}
+                            onChange={(e) => handleChangeCertificados(certificado.id || 0, e)}
                             value={certificado.skill}
                             className="text-sm grow p-2 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                         />
@@ -119,7 +119,7 @@ const OtherData = () => {
                             id={`entidadEmisora-${certificado.id}`}
                             name="entidadEmisora"
                             placeholder="Entidad emisora"
-                            onChange={(e) => handleChangeCertificados(certificado.id, e)}
+                            onChange={(e) => handleChangeCertificados(certificado.id || 0, e)}
                             value={certificado.entidadEmisora}
                             className="text-sm flex-none p-2 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                         />
@@ -128,7 +128,7 @@ const OtherData = () => {
                             id={`ano-${certificado.id}`}
                             name="ano"
                             placeholder="Año de expedición"
-                            onChange={(e) => handleChangeCertificados(certificado.id, e)}
+                            onChange={(e) => handleChangeCertificados(certificado.id || 0, e)}
                             value={certificado.ano}
                             className="w-40 text-sm flex-none p-2 border border-gray-300 rounded-md focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                         />
