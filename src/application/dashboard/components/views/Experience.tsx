@@ -35,14 +35,14 @@ const Experience = () => {
                     <div className="flex flex-col gap-4">
                         <section className="flex gap-2 items-center justify-between">
                             <h3 className="font-thin text-zinc-800 mt-2">Experiencia</h3>
-                           <Trash setState={removeExperience} id={experience.id} />
+                           <Trash setState={removeExperience} id={experience.id || 0} />
                         </section>
                         <input
                             type="text"
                             id={`empresa-${experience.id}`}
                             name="empresa"
                             placeholder="Empresa en donde trabajaste o tu proyecto más relevante"
-                            onChange={(e) => handleChange(experience.id, e)}
+                            onChange={(e) => handleChange(experience.id || 0, e)}
                             value={experience.empresa}
                             className="text-sm w-full p-2 py-3 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                         />
@@ -57,7 +57,7 @@ const Experience = () => {
                                 id={`${name}-${experience.id}`}
                                 name={String(name)}
                                 placeholder={String(placeholder)}
-                                onChange={(e) => handleChange(experience.id, e)}
+                                onChange={(e) => handleChange(experience.id || 0, e)}
                                 value={property}
                                 className={`text-sm ${name === 'profesion' ? 'grow' : 'flex-none'} p-2 py-3 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none`}
                             />
@@ -67,7 +67,7 @@ const Experience = () => {
                             id={`descripcion-${experience.id}`}
                             name="descripcion"
                             placeholder="Carga aquí los detalles de tu experiencia"
-                            onChange={(e) => handleChange(experience.id, e)}
+                            onChange={(e) => handleChange(experience.id || 0, e)}
                             value={experience.descripcion}
                             className="h-28 resize-none text-sm w-full p-2 py-3 border border-gray-300 rounded-md  focus:border-blue-2 focus:border-spacing-1 focus:outline-none"
                         ></textarea>

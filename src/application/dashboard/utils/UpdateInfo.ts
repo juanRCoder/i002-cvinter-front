@@ -3,11 +3,10 @@ import {
   Certificados,
   Education,
   Experiencia,
-  TechSkills,
 } from "../components/templates/interfaces-templates";
 
 // Define tipos genéricos
-type StateType = Education | Experiencia | Certificados | TechSkills;
+type StateType = Education | Experiencia | Certificados;
 type StateTypeArray<T> = T[];
 
 // Función de actualización
