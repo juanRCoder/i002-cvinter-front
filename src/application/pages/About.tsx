@@ -1,17 +1,21 @@
 import JesusMadero from '../../assets/team/jesusMadero.jpg'
 import juanRamirez from '../../assets/team/juanRamirez.jpg'
 import lucioMorales from '../../assets/team/lucioMorales.jpg'
+import emiliano from '../../assets/team/Emiliano.jpeg';
+import nicolas from '../../assets/team/Nicolas.jpeg';
+import lautaro from '../../assets/team/Lautaro.jpeg';
+import user from '../../assets/team/user.jpg';
 import './About.css';
 
 const About = () => {
   const TEAM = [
     { name: 'Jesus Madero', img: JesusMadero, link: 'https://www.linkedin.com/in/jesus-madero-vera-410a00240/', username: 'Jesus Madero' },
-    { name: 'Lautaro Pintos', img: 'https://www.med.unc.edu/pharm/wp-content/uploads/sites/930/2019/01/juan-song-2023-400-2.jpg', link: 'https://www.linkedin.com/in/lautaro-pintos-20417a109/', username: 'Lautaro Pintos' },
-    { name: 'Emiliano Diaz', img: 'https://www.med.unc.edu/pharm/wp-content/uploads/sites/930/2019/01/juan-song-2023-400-2.jpg', link: 'https://www.linkedin.com/in/emiliano-esteban-diaz/', username: 'Emiliano Diaz' },
+    { name: 'Lautaro Pintos', img: lautaro, link: 'https://www.linkedin.com/in/lautaro-pintos-20417a109/', username: 'Lautaro Pintos' },
+    { name: 'Emiliano Diaz', img: emiliano , link: 'https://www.linkedin.com/in/emiliano-esteban-diaz/', username: 'Emiliano Diaz' },
     { name: 'Juan Ramirez', img: juanRamirez , link: 'https://www.linkedin.com/in/juan-ramirez-490b84271/', username: 'Juan Ramirez' },
     { name: 'Lucio Morales', img: lucioMorales, link: 'https://www.linkedin.com/in/lucio-morales/', username: 'Lucio Morales' },
-    { name: 'Nicolás Irigoyen', img: 'https://www.med.unc.edu/pharm/wp-content/uploads/sites/930/2019/01/juan-song-2023-400-2.jpg', link: 'https://www.linkedin.com/in/nirigoyen/', username: 'Nicolás Irigoyen ' },
-    { name: 'Christian Gil', img: 'https://www.med.unc.edu/pharm/wp-content/uploads/sites/930/2019/01/juan-song-2023-400-2.jpg', link: 'https://www.linkedin.com/in/christiangil72/', username: 'Christian Gil' },
+    { name: 'Nicolás Irigoyen', img: nicolas, link: 'https://www.linkedin.com/in/nirigoyen/', username: 'Nicolás Irigoyen ' },
+    { name: 'Christian Gil', img: user, link: 'https://www.linkedin.com/in/christiangil72/', username: 'Christian Gil' },
   ]
 
   return <section className="lg:min-h-screen md:flex md:items-center md:justify-center font-lato background">

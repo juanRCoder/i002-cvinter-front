@@ -9,20 +9,22 @@ const Footer = () => {
         <section className='flex justify-between mx-7'>
           <a href='#home'>
             <div className='h-24 w-24'>
-              <img
-                className='w-full h-full object-cover'
-                src={cvinter_white}
-                title='cvinter_logo'
-                alt='cvinter_logo'
-              />
+              <Link to={'/home'}>
+                <img
+                  className='w-full h-full object-cover'
+                  src={cvinter_white}
+                  title='cvinter_logo'
+                  alt='cvinter_logo'
+                />
+              </Link>
             </div>
           </a>
           <div className='text-white mt-12'>
             <h1 className='text-right font-bold text-lg mb-3'>Links</h1>
             <ul className='text-right flex flex-col gap-4'>
               <li className='hover:font-semibold'><Link to={'/about'}>Sobre nosotros</Link></li>
-              <li className='hover:font-semibold'><a href="#home">Politicas de privacidad</a></li>
-              <li className='hover:font-semibold'><a href="#home">Cookies</a></li>
+              <li className='hover:font-semibold'><Link to={'/PrivacyPolicy'}>Politicas de privacidad</Link></li>
+              <li className='hover:font-semibold'><Link to={'/PrivacyCookies'}>Cookies</Link></li>
             </ul>
           </div>
         </section>

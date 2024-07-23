@@ -1,5 +1,5 @@
 export interface Experiencia {
-  id: number;
+  id?: number;
   profesion?: string;
   empresa?: string;
   dateStart?: string | number;
@@ -7,7 +7,7 @@ export interface Experiencia {
   descripcion?: string;
 }
 export interface Education {
-  id: number;
+  id?: number;
   instituto?: string;
   carrera?: string;
   nivel?: string;
@@ -15,7 +15,6 @@ export interface Education {
   dateEnd?: string | number;
 }
 export interface TechSkills {
-  id: number;
   skill: string;
   nivel: string;
 }
@@ -24,7 +23,7 @@ export interface Idiomas {
   nivel: string;
 }
 export interface Certificados {
-  id: number;
+  id?: number;
   skill: string;
   entidadEmisora: string;
   ano: string | number;
@@ -35,10 +34,10 @@ export interface Info {
 }
 export interface Template5Props {
   templateSelected?: number;
-  name?: string | undefined;
-  lastName?: string | undefined;
-  titulo?: string | undefined;
-  bio?: string;
+  name: string;
+  lastName: string;
+  titulo: string;
+  bio: string;
   education?: Education[];
   experiencia?: Experiencia[];
   techSkills?: TechSkills[];
