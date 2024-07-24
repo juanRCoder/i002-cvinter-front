@@ -4,7 +4,6 @@ import lucioMorales from '../../assets/team/lucioMorales.jpg'
 import emiliano from '../../assets/team/Emiliano.jpeg';
 import nicolas from '../../assets/team/Nicolas.jpeg';
 import lautaro from '../../assets/team/Lautaro.jpeg';
-import user from '../../assets/team/user.jpg';
 import './About.css';
 
 const About = () => {
@@ -15,7 +14,6 @@ const About = () => {
     { name: 'Juan Ramirez', img: juanRamirez , link: 'https://www.linkedin.com/in/juan-ramirez-490b84271/', username: 'Juan Ramirez' },
     { name: 'Lucio Morales', img: lucioMorales, link: 'https://www.linkedin.com/in/lucio-morales/', username: 'Lucio Morales' },
     { name: 'Nicolás Irigoyen', img: nicolas, link: 'https://www.linkedin.com/in/nirigoyen/', username: 'Nicolás Irigoyen ' },
-    { name: 'Christian Gil', img: user, link: 'https://www.linkedin.com/in/christiangil72/', username: 'Christian Gil' },
   ]
 
   return <section className="lg:min-h-screen md:flex md:items-center md:justify-center font-lato background">
