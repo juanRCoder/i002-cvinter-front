@@ -8,13 +8,13 @@ import { Template5Props } from "./interfaces-templates";
 
 const Template2: React.FC<Template5Props> = ({ name, lastName, titulo, bio, education, personaInfo, experiencia, techSkills, idiomas, certificados, softSkills }) => {
   return (
-    <main className="w-full h-full p-8 shadow-template">
-      <header className=" text-slate-500 grid place-items-center py-2 text-center overflow-hidden break-words">
+    <main className="shadow-template">
+      <header className=" px-4 text-slate-500 grid place-items-center py-2 text-center overflow-hidden break-words">
         <h1 className="text-5xl tracking-wide overflow-wrap" style={{ maxWidth: "95%" }}>{name} {lastName}</h1>
         <h3 className="w-full text-xl overflow-wrap py-3 border-b border-slate-300">{titulo}</h3>
       </header>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="px-4 grid grid-cols-2 gap-8">
         <section>
           {/* SOBRE MI */}
           <article className="min-w-full break-words whitespace-normal text-gray-700 mt-2">
@@ -122,7 +122,7 @@ const Template2: React.FC<Template5Props> = ({ name, lastName, titulo, bio, educ
         </section>
       </div>
       {/* REDES */}
-      <article className="py-3 overflow-hidden h-auto break-words whitespace-normal text-gray-700">
+      <article className="px-4 py-3 overflow-hidden h-auto break-words whitespace-normal text-gray-700">
         {personaInfo && personaInfo.length > 0 && (
           <header className="w-full">
             <p className="py-2 text-left text-base tracking-wide font-semibold text-slate-500 border-b border-slate-300 ">REDES SOCIALES</p>

@@ -32,12 +32,12 @@ interface CvStore extends Template5Props {
 
 export const useCvStore = create<CvStore>((set) => ({
   templateSelected: 0,
-  name: "Olivia",
-  lastName: "Wilson",
+  name: "Jhon",
+  lastName: "Doe",
   titulo: "",
   bio: "",
   personaInfo: [
-    {icon:'email', dato: 'OliviaWilson@gmail.com'}
+    {icon:'email', dato: 'JhonDoe@gmail.com'}
   ],
   experiencia: [],
   education: [],

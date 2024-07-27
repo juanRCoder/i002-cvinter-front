@@ -17,8 +17,8 @@ const CVPreview: React.FC = () => {
   const renderSelectedTemplate = () => {
     const props = {
       templateSelected,
-      name: name || "Olivia",
-      lastName: lastName || "Wilson",
+      name: name || "Jhon",
+      lastName: lastName || "Doe",
       bio,
       titulo,
       experiencia,

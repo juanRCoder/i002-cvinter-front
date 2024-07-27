@@ -27,10 +27,10 @@ const Step: React.FC<StepProps> = ({ image, title, description }) => {
 
 const HowItWorks: React.FC = () => {
   return (
-    <section id="comoFunciona" className="bg-zinc-50 max-w-7xl m-auto">
+    <section id="comoFunciona" className="hidden md:block max-w-7xl m-auto">
       <div className="container mx-auto px-4">
         <div className="pt-20 gap-10 flex flex-col md:flex-row items-center mb-8 justify-center">
-          <div className="text-neutral-800  lg:w-96 outline-1 text-left md:pr-8">
+          <div className="marker:text-neutral-800  md:w-80 lg:w-96 text-left md:pr-8">
             <h2 className="text-6xl font-semibold leading-tight mb-4">¿Cómo funciona?</h2>
             <p className="mb-4 text-2xl leading-relaxed">
               ¡Crear tu CV perfecto nunca ha sido tan fácil! Regístrate, sigue estos sencillos pasos y obtén un CV profesional en minutos:

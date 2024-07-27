@@ -22,8 +22,8 @@ const ProgressNav = () => {
     ];
 
     return (
-        <div className="shadow-custom shadow-blue-logo/50 pt-8">
-            <ul className="m-auto max-w-7xl flex items-center justify-center">
+        <div className="hidden md:block shadow-custom shadow-blue-logo/50 pt-8">
+            <ul className="m-auto max-w-7xl flex items-center flex-wrap justify-center">
                 {phases.map((phase, index) => (
                     <li
                         key={index}

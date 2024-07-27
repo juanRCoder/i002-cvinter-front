@@ -7,7 +7,7 @@ function PrivacyCookies() {
     <>
       <Navbar />
       <div className="flex flex-col min-h-screen border-t border-blue-2">
-        <section className="flex-1 max-w-6xl m-auto text-zinc-700 my-10 text-lg">
+        <section className="flex-1 max-w-6xl mx-5 m-auto text-zinc-700 my-10 text-lg">
           <h1 className="text-center text-4xl text-blue-2">POLÍTICA DE COOKIES</h1>
           <h2 className="text-center text-xl text-blue-500 underline py-2"><Link to={'/'}>Cvinter-app</Link></h2>
           <p className="py-4">

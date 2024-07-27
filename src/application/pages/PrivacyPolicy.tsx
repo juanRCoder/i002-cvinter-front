@@ -12,7 +12,7 @@ function PrivacyPolicy() {
     <>
       <Navbar />
       <div className="flex flex-col min-h-screen border-t border-blue-2">
-        <section className="flex-1 max-w-6xl m-auto text-zinc-700 mt-10 text-lg">
+        <section className="flex-1 max-w-6xl mx-5 m-auto text-zinc-700 mt-10 text-lg">
           {[
             ['POLÍTICA DE PRIVACIDAD', textos.text1],
             ['Información que es recogida', textos.text2],

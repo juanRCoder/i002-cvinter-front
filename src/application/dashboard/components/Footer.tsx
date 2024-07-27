@@ -4,7 +4,7 @@ import cvinter_white from '../../../assets/logos/Cvinter_white.webp';
 const Footer = () => {
 
   return (
-    <footer className='bg-musgo font-lato pt-10 px-16 pb-4'>
+    <footer className='hidden md:block bg-musgo font-lato pt-10 md:px-5 lg:px-16 pb-4'>
       <div className='max-w-7xl m-auto'>
         <section className='flex justify-between mx-7'>
           <a href='/'>
