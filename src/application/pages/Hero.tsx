@@ -3,13 +3,13 @@ import { MdOutlineFeed } from "react-icons/md";
 import { CiStar } from "react-icons/ci";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaPlus } from "react-icons/fa";
-import CVelegante from '../../assets/cvTemplates/CV-Elegante.png';
-import CVejecutivo from '../../assets/cvTemplates/CV-Ejecutivo.png';
-import CVsoft from '../../assets/cvTemplates/CV-Soft.png';
-import CVnew from '../../assets/cvTemplates/CV-New.png';
-import CVclasico from '../../assets/cvTemplates/CV-Clasico.png';
+import CVelegante from '../../assets/cvTemplates/CV-Elegante.webp';
+import CVejecutivo from '../../assets/cvTemplates/CV-Ejecutivo.webp';
+import CVsoft from '../../assets/cvTemplates/CV-Soft.webp';
+import CVnew from '../../assets/cvTemplates/CV-New.webp';
+import CVclasico from '../../assets/cvTemplates/CV-Clasico.webp';
 import { Link } from 'react-router-dom';
-import HeroImages from '../../assets/Heroimages.png'
+import HeroImages from '../../assets/Heroimages.webp'
 
 interface StatProps {
   count: number;

@@ -1,4 +1,4 @@
-import imgUpload from '../../../../assets/img-upload.png';
+import imgUpload from '../../../../assets/img-upload.webp';
 import { useCvStore } from '../../../zustand/store/CvStore';
 import { postCV } from '../../services/CVService';
 import { handleDownloadPdf } from '../../utils/uploadPDF';

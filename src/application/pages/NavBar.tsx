@@ -3,7 +3,7 @@ import { Dialog, DialogPanel } from '@headlessui/react';
 import ButtonNav from './ButtonNav';
 import { AiOutlineUser } from "react-icons/ai";
 import { Link, useLocation } from 'react-router-dom';
-import logo1 from '../../assets/cvinter_logo_1.png'
+import logo1 from '../../assets/logos/cvinter_logo_1.webp'
 
 interface NavigationItem {
   name: string;

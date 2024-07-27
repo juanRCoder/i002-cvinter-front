@@ -1,15 +1,15 @@
 .background {
-    background-image: url(../../assets/about/bg_about_movil.png);
+    background-image: url(../../assets/about/bg_about_movil.webp);
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
 @media screen and (min-width: 400px) {
     .background {
-        background-image: url(../../assets/about/bg_about_tablet.png);
+        background-image: url(../../assets/about/bg_about_tablet.webp);
     }
 }
 @media screen and (min-width: 768px) {
     .background {
-        background-image: url(../../assets/about/bg_about.png);
+        background-image: url(../../assets/about/bg_about.webp);
     }
 }

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import cvinter_white from '../../../assets/Cvinter_white.png';
+import cvinter_white from '../../../assets/logos/Cvinter_white.webp';
 
 const Footer = () => {
 
@@ -7,16 +7,14 @@ const Footer = () => {
     <footer className='bg-musgo font-lato pt-10 px-16 pb-4'>
       <div className='max-w-7xl m-auto'>
         <section className='flex justify-between mx-7'>
-          <a href='#home'>
+          <a href='/'>
             <div className='h-24 w-24'>
-              <Link to={'/home'}>
                 <img
                   className='w-full h-full object-cover'
                   src={cvinter_white}
                   title='cvinter_logo'
                   alt='cvinter_logo'
                 />
-              </Link>
             </div>
           </a>
           <div className='text-white mt-12'>

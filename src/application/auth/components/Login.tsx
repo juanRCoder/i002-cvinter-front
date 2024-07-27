@@ -1,5 +1,5 @@
-import login_image from "../../../assets/login_image.png"
-import cvinter_logo1 from "../../../assets/cvinter_logo_1.png"
+import login_image from "../../../assets/login_image.webp"
+import cvinter_logo1 from "../../../assets/logos/cvinter_logo_1.webp"
 import { LoginData } from "../services/types"
 import { ChangeEvent, useState } from "react"
 import { loginValidations } from "../services/validations"

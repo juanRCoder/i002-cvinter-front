@@ -1,8 +1,8 @@
 import React from 'react';
-import People1 from '../../assets/people1.png'
-import People2 from '../../assets/people2.png'
-import People3 from '../../assets/people3.png'
-import People4 from '../../assets/people4.png'
+import People1 from '../../assets/people1.webp'
+import People2 from '../../assets/people2.webp'
+import People3 from '../../assets/people3.webp'
+import People4 from '../../assets/people4.webp'
 
 interface StepProps {
   image: string;

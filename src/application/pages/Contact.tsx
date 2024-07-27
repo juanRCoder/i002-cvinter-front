@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaFacebookF, FaInstagram, FaDiscord } from "react-icons/fa";
-import phone1 from '../../assets/phone1.png';
+import phone1 from '../../assets/phone1.webp';
 
 import './Contact.css';
 

@@ -1,9 +1,9 @@
 import NextButton from "../NextButton";
-import clasico from "../../../../assets/cvTemplates/CV-Clasico.png";
-import ejecutivo from "../../../../assets/cvTemplates/CV-Ejecutivo.png";
-import elegante from "../../../../assets/cvTemplates/CV-Elegante.png";
-import newCv from "../../../../assets/cvTemplates/CV-New.png";
-import soft from "../../../../assets/cvTemplates/CV-Soft.png";
+import clasico from "../../../../assets/cvTemplates/CV-Clasico.webp";
+import ejecutivo from "../../../../assets/cvTemplates/CV-Ejecutivo.webp";
+import elegante from "../../../../assets/cvTemplates/CV-Elegante.webp";
+import newCv from "../../../../assets/cvTemplates/CV-New.webp";
+import soft from "../../../../assets/cvTemplates/CV-Soft.webp";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useCvStore } from "../../../zustand/store/CvStore";

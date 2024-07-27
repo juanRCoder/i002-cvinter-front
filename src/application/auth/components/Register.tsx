@@ -1,5 +1,5 @@
-import signup_image from "../../../assets/signup_image.png"
-import cvinter_logo1 from "../../../assets/cvinter_logo_1.png"
+import signup_image from "../../../assets/signup_image.webp"
+import cvinter_logo1 from "../../../assets/logos/cvinter_logo_1.webp"
 import { UserFormData } from "../services/types";
 import { ChangeEvent, useState } from "react";
 import { validateInputErrors } from "../services/validations";

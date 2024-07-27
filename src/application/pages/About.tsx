@@ -1,9 +1,9 @@
-import JesusMadero from '../../assets/team/jesusMadero.jpg'
-import juanRamirez from '../../assets/team/juanRamirez.jpg'
-import lucioMorales from '../../assets/team/lucioMorales.jpg'
-import emiliano from '../../assets/team/Emiliano.jpeg';
-import nicolas from '../../assets/team/Nicolas.jpeg';
-import lautaro from '../../assets/team/Lautaro.jpeg';
+import JesusMadero from '../../assets/team/jesusMadero.webp'
+import juanRamirez from '../../assets/team/juanRamirez.webp'
+import lucioMorales from '../../assets/team/lucioMorales.webp'
+import emiliano from '../../assets/team/Emiliano.webp';
+import nicolas from '../../assets/team/Nicolas.webp';
+import lautaro from '../../assets/team/Lautaro.webp';
 import './About.css';
 
 const About = () => {
