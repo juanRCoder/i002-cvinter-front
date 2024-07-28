@@ -1,3 +1,3 @@
 # Cvinter Frontend
 ### link: 
-[cvinter-app](https://cvinter-front.vercel.app/)
+[cvinter-front-app](https://i002-cvinter-front-phi.vercel.app/)
