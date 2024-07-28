@@ -20,7 +20,7 @@ const CVTemplates = () => {
             <>
                 <Navbar />
                 <ProgressNav />
-                <section className="hidden md:flex md:flex-col lg:flex-row m-auto max-w-7xl gap-10 my-10 md:mx-5">
+                <section className="hidden md:flex md:flex-col lg:flex-row lg:m-auto lg:max-w-7xl gap-10 my-10 md:mx-5 lg:mt-5">
                     <article className="md:w-full lg:w-1/2">
                         <div>
                             <h2 className="text-lg text-zinc-800">{locationns.pathname === "/CVTemplates/upload" ? 'Descagar tu CV' : 'Carga tu Informacion'}</h2>

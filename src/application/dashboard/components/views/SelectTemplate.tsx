@@ -27,7 +27,7 @@ const SelectTemplate = () => {
     { id: 2, src: ejecutivo, alt: "Plantilla 2", name: "Plantilla 2" },
     { id: 3, src: soft, alt: "Plantilla 3", name: "Plantilla 3" },
     { id: 4, src: newCv, alt: "Plantilla 4", name: "Plantilla 4" },
-    { id: 5, src: clasico, alt: "Plantilla 5", name: "Clasico" }
+    { id: 5, src: clasico, alt: "Plantilla 5", name: "Plantilla 5" }
   ];
 
   const handleSelect = (templateId: number) => {

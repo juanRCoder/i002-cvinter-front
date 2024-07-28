@@ -49,7 +49,7 @@ const HowItWorks: React.FC = () => {
             <Step
               image={People4}
               title="Elige una plantilla"
-              description="Selecciona entre 12 plantillas profesionales que se adapten a tu estilo y sector. Tenemos modelos de diseño y Harvard."
+              description="Selecciona entre 5 plantillas profesionales que se adapten a tu estilo y sector. Tenemos modelos de diseño y Harvard."
             />
           </div>
           <div className="">
